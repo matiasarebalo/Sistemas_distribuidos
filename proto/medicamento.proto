@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// package nombre_package;
+
+// option java_multiple_files = true;
+// option java_package = "com.example.tutorial.protos";
+// option java_outer_classname = "AddressBookProtos";
+
+message TipoMedicamento{
+	int32 id = 1;
+	string nombre = 2;
+}
+
+message Medicamento{
+	int32 id = 1;
+	string codigo = 2;
+	string nombreComercial = 3;
+	string nombreDroga = 4;
+	TipoMedicamento tipo = 5;	
+}
