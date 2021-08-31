@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.tp_sd_1.server.user.*;
 
-@SpringBootApplication(scanBasePackages = {"com.tp_sd_1"})
+@SpringBootApplication()
 public class GrpcServerApplication {
 
     public static void main(String[] args) throws Exception  {
