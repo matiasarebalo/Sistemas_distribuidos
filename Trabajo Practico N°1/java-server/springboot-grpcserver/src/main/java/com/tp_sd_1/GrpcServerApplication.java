@@ -2,6 +2,7 @@ package com.tp_sd_1;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +15,8 @@ public class GrpcServerApplication {
         SpringApplication.run(GrpcServerApplication.class, args);
         Server server = ServerBuilder.forPort(9090).addService(new UserService()).build();
         server.start();
-        System.out.println("Server Started at " + server.getPort());
+        System.out.println("Server Started at " + server.getPort());    
+        
         server.awaitTermination();
     }
 
