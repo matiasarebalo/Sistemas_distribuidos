@@ -32,9 +32,8 @@ public class Medicamento {
 	Medicamento() {
 	}
 
-	public Medicamento(long idMedicamento, String codigo, String nombreComercial, String nombreDroga) {
+	public Medicamento(String codigo, String nombreComercial, String nombreDroga) {
 		super();
-		this.idMedicamento = idMedicamento;
 		this.codigo = codigo;
 		this.nombreComercial = nombreComercial;
 		this.nombreDroga = nombreDroga;

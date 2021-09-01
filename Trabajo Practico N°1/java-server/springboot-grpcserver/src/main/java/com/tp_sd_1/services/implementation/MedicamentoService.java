@@ -21,5 +21,5 @@ public class MedicamentoService implements IMedicamentoService {
 	public List<Medicamento> getAll() {
 		return medicamentoRepository.findAll();
 	}
-	
+
 }
