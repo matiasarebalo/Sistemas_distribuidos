@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 public class TipoMedicamento {
@@ -20,6 +22,10 @@ public class TipoMedicamento {
 
 	@Column(name = "nombre")
 	protected String nombre;
+
+	@Value("false")
+	@Column(name = "baja")
+	protected boolean baja;
 
 	public TipoMedicamento() {
 		super();
@@ -53,6 +59,14 @@ public class TipoMedicamento {
 		this.nombre = nombre;
 	}
 
+	public boolean isBaja() {
+		return baja;
+	}
+
+	public void setBaja(boolean baja) {
+		this.baja = baja;
+	}
+
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -74,5 +88,4 @@ public class TipoMedicamento {
 		return "TipoMedicamento [idMedicamento=" + idMedicamento + ", nombre=" + nombre + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + "]";
 	}
-
 }

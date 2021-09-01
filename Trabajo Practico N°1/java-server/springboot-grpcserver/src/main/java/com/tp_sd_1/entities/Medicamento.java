@@ -23,6 +23,9 @@ public class Medicamento {
 	@Column(name = "nombreDroga")
 	protected String nombreDroga;
 
+	@Column(name = "codVerificador")
+	protected int codVerificador;
+
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
@@ -38,6 +41,7 @@ public class Medicamento {
 		this.codigo = codigo;
 		this.nombreComercial = nombreComercial;
 		this.nombreDroga = nombreDroga;
+		setCodVerificador();
 	}
 
 	public long getIdMedicamento() {
@@ -86,6 +90,45 @@ public class Medicamento {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public int getCodVerificador() {
+		return codVerificador;
+	}
+
+	// Suponiendo que el codigo se ingresa en formato String XXX-NNNNN
+	// Si se ingresa en formato numerico, habria que realizar la conversion
+	public void setCodVerificador() {
+
+		String codNumerico = "";
+
+		try {
+			codNumerico = codigo.substring(4, 8);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		this.codVerificador = calcularCodigoVerificador(codNumerico);
+	}
+
+	private int calcularCodigoVerificador(String codNumerico) {
+
+		int suma = -1;
+
+		if (codNumerico != "") {
+			suma = 0;
+
+			for (int i: codNumerico.toCharArray()) {
+				suma += i;
+			}
+
+			if (suma > 9) {
+				calcularCodigoVerificador(Integer.toString(suma));
+			}
+		}
+
+		return suma;
 	}
 
 	@Override
