@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+// CUANDO SE HAGA EL MVN CLEAN INSTALL, SE CREARAN TODOS LOS ARCHIVOS EN LA SIGUIENTE RUTA.
+package com.tp_sd_1.stubs.medicamento;
+
+option java_multiple_files = true;
+
+// option java_outer_classname = "MedicamentoProto";
+// option java_package = "com.example.tutorial.protos";
+
+
+// Para poder devolver una respuesta vacia.
+import "google/protobuf/empty.proto";
+// Para poder usar la version/representacion JSON de cualquier data type.
+import "google/protobuf/wrappers.proto";
+//Para poder usar valores sin definir un data type. En este caso, viene bien para las dos funciones listar que tenemos que implementar 
+// (una pasa un string "a" y la otra pasa un TipoMedicamento)
+import "google/protobuf/any.proto";
+
+
+service TipoMedicamentoService{
+	rpc altaTipoMedicamento (TipoMedicamento) returns (TipoMedicamento) {};
+	rpc bajaTipoMedicamento (google.protobuf.Int32Value) returns (google.protobuf.Empty) {};
+}
+
+service MedicamentoService {
+	rpc altaMedicamento (Medicamento) returns (Medicamento) {};
+	rpc listarMedicamentosAerosol (Pagination) returns (MedicamentoList) {};
+	rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
+}
+
+
+message MedicamentoList{
+    repeated Medicamento resultList=1;        
+    google.protobuf.Int32Value resultCount=2;
+}
+
+message TipoMedicamento{
+	int32 id = 1;
+	string nombre = 2;
+}
+
+message Medicamento{
+	int32 id = 1;
+	string codigo = 2;
+	string nombreComercial = 3;
+	string nombreDroga = 4;
+	TipoMedicamento tipo = 5;	
+}
+
+// Para ayudarnos con las queries del listar
+message Pagination{
+	int32 page = 1;
+	int32 pageSize = 2;
+	Search search = 3;
+}
+
+message Search{
+	google.protobuf.Any filter = 1;
+    	string jsonFilter = 2;
+}
