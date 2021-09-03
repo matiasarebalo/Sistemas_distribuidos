@@ -6,14 +6,12 @@ import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.tp_sd_1.server.user.*;
-
 @SpringBootApplication()
 public class GrpcServerApplication {
 
     public static void main(String[] args) throws Exception  {
         SpringApplication.run(GrpcServerApplication.class, args);
-        Server server = ServerBuilder.forPort(9090).addService(new UserService()).build();
+        Server server = ServerBuilder.forPort(9090).build();
         server.start();
         System.out.println("Server Started at " + server.getPort());    
         
