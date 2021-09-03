@@ -27,12 +27,32 @@ class TipoMedicamentoList(Resource):
 
     def get(cls):
 
-        return jsonify({'msg': 'Todos los Tipo de Medicamentos.'})
+        return jsonify({
+            'msg': 'Todos los Tipos de Medicamentos.',
+            'tipoMedicamentos': [
+                {
+                    'id': '1',
+                    'nombre': 'tipoMedicamento1'
+                },
+                {
+                    'id': '2',
+                    'nombre': 'tipoMedicamento2'
+                },
+                {
+                    'id': '3',
+                    'nombre': 'tipoMedicamento3'
+                },
+                {
+                'id': '4',
+                    'nombre': 'tipoMedicamento4'
+                },
+            ]
+        })
 
     def post(self):
 
         data = request.get_json()    
 
         return jsonify({
-            'msg': 'Tipo de Medicamento creado satisfactoriamente.',
+            'msg': 'Tipo de Medicamento creado satisfactoriamente.'
         })

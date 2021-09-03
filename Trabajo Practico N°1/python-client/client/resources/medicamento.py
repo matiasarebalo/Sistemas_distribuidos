@@ -27,7 +27,45 @@ class MedicamentoList(Resource):
 
     def get(cls):
 
-        return jsonify({'msg': 'Todos los Medicamentos.'})
+        return jsonify({
+            'msg': 'Todos los Medicamentos.',
+            'medicamentos': [
+                {
+                    'id': '1',
+                    'codigo': 'XX',
+                    'nombreComercial': 'nombreComercial1',
+                    'nombreDroga': 'nombreDroga1',
+                    'tipo': 
+                        {
+                            'id': '1',
+                            'nombre': 'tipoMedicamento1'
+                        }
+                },
+                {
+                    'id': '2',
+                    'codigo': 'XX',
+                    'nombreComercial': 'nombreComercial2',
+                    'nombreDroga': 'nombreDroga2',
+                    'tipo': 
+                        {
+                            'id': '2',
+                            'nombre': 'tipoMedicamento2'
+                        }
+                },
+                {
+                    'id': '3',
+                    'codigo': 'XX',
+                    'nombreComercial': 'nombreComercial3',
+                    'nombreDroga': 'nombreDroga3',
+                    'tipo': 
+                        {
+                            'id': '3',
+                            'nombre': 'tipoMedicamento3'
+                        }
+                },
+
+            ]
+        })
 
     def post(self):
 

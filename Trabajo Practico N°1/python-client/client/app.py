@@ -25,7 +25,7 @@ api.add_resource(Medicamento, '/api/v1/medicamentos/<string:id>')
 api.add_resource(MedicamentoList, '/api/v1/medicamentos')
 
 api.add_resource(TipoMedicamento, '/api/v1/tipoMedicamento/<string:id>')
-api.add_resource(TipoMedicamentoList, '/api/v1/tipoMedicamento')
+api.add_resource(TipoMedicamentoList, '/api/v1/tipoMedicamentos')
 
 if __name__ == '__main__':
     app.run(port=4000, debug=True)
