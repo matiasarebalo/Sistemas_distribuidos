@@ -26,11 +26,19 @@ public class Medicamento {
 	@Column(name = "codVerificador")
 	protected int codVerificador;
 
+	@ManyToOne
+	@JoinColumn(name = "tipo_medicamento_id_medicamento")
+	protected TipoMedicamento tipoMedicamento;
+
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+
+	public TipoMedicamento getTipoMedicamento() {
+		return tipoMedicamento;
+	}
 
 	Medicamento() {
 	}
@@ -118,8 +126,8 @@ public class Medicamento {
 		if (codNumerico != "") {
 			suma = 0;
 
-			for (int i: codNumerico.toCharArray()) {
-				suma += i;
+			for (char c: codNumerico.toCharArray()) {
+				suma += Integer.parseInt(String.valueOf(c));
 			}
 
 			if (suma > 9) {
@@ -130,11 +138,18 @@ public class Medicamento {
 		return suma;
 	}
 
+	public boolean verificar(String codigo) {
+		return Integer.parseInt(codigo.substring(codigo.length() - 1)) == calcularCodigoVerificador(codigo);
+	}
+
+	public boolean esPrioritario(String codigo) {
+		return codigo.toCharArray()[0] == 'P' || codigo.toCharArray()[0] == 'W';
+	}
+
 	@Override
 	public String toString() {
 		return "Medicamento [idMedicamento=" + idMedicamento + ", codigo=" + codigo + ", nombreComercial="
 				+ nombreComercial + ", nombreDroga=" + nombreDroga + ", createdAt=" + createdAt + ", updatedAt="
 				+ updatedAt + "]";
 	}
-
 }

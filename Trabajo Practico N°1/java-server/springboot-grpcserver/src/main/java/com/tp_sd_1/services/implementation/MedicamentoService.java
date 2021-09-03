@@ -22,4 +22,13 @@ public class MedicamentoService implements IMedicamentoService {
 		return medicamentoRepository.findAll();
 	}
 
+	@Override
+	public List<Medicamento> buscarPorTipo(int idTipo) {
+		return medicamentoRepository.buscarPorTipo(idTipo);
+	}
+
+	@Override
+	public List<Medicamento> buscarInicio(char letra) {
+		return medicamentoRepository.buscarPorInicio(letra);
+	}
 }
