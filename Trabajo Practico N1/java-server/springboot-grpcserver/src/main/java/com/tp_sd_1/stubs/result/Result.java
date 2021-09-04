@@ -34,7 +34,7 @@ public final class Result {
   static {
     java.lang.String[] descriptorData = {
       "\n\014result.proto\022\030com.tp_sd_1.stubs.result" +
-      "\"\033\n\rResultRequest\022\n\n\002id\030\001 \001(\t\"Z\n\016ResultR" +
+      "\"\033\n\rResultRequest\022\n\n\002id\030\001 \001(\005\"Z\n\016ResultR" +
       "esponse\022\n\n\002id\030\001 \001(\005\022\016\n\006codigo\030\002 \001(\t\022\027\n\017n" +
       "ombreComercial\030\003 \001(\t\022\023\n\013nombreDroga\030\004 \001(" +
       "\t2}\n\rResultService\022l\n\027getResultForMedica" +

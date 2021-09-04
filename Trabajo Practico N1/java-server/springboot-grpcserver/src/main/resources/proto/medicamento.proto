@@ -27,6 +27,8 @@ service MedicamentoService {
 	rpc altaMedicamento (Medicamento) returns (Medicamento) {};
 	rpc listarMedicamentosAerosol (Pagination) returns (MedicamentoList) {};
 	rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
+	rpc getMedicamentoInfo(MedicamentoRequest) returns (MedicamentoResponse);
+	
 }
 
 
@@ -47,6 +49,21 @@ message Medicamento{
 	string nombreDroga = 4;
 	TipoMedicamento tipo = 5;	
 }
+
+
+message MedicamentoRequest{
+  int32 id = 1;
+}
+
+
+message MedicamentoResponse{
+	int32 id = 1;
+	string codigo = 2;
+	string nombreComercial = 3;
+	string nombreDroga = 4;
+	TipoMedicamento tipo = 5;	
+}
+
 
 // Para ayudarnos con las queries del listar
 message Pagination{

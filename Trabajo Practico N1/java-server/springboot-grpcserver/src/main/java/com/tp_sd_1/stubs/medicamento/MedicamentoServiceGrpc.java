@@ -123,6 +123,38 @@ public final class MedicamentoServiceGrpc {
      return getListarMedicamentosNombreComercialAMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.tp_sd_1.stubs.medicamento.MedicamentoRequest,
+      com.tp_sd_1.stubs.medicamento.MedicamentoResponse> getGetMedicamentoInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getMedicamentoInfo",
+      requestType = com.tp_sd_1.stubs.medicamento.MedicamentoRequest.class,
+      responseType = com.tp_sd_1.stubs.medicamento.MedicamentoResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.tp_sd_1.stubs.medicamento.MedicamentoRequest,
+      com.tp_sd_1.stubs.medicamento.MedicamentoResponse> getGetMedicamentoInfoMethod() {
+    io.grpc.MethodDescriptor<com.tp_sd_1.stubs.medicamento.MedicamentoRequest, com.tp_sd_1.stubs.medicamento.MedicamentoResponse> getGetMedicamentoInfoMethod;
+    if ((getGetMedicamentoInfoMethod = MedicamentoServiceGrpc.getGetMedicamentoInfoMethod) == null) {
+      synchronized (MedicamentoServiceGrpc.class) {
+        if ((getGetMedicamentoInfoMethod = MedicamentoServiceGrpc.getGetMedicamentoInfoMethod) == null) {
+          MedicamentoServiceGrpc.getGetMedicamentoInfoMethod = getGetMedicamentoInfoMethod = 
+              io.grpc.MethodDescriptor.<com.tp_sd_1.stubs.medicamento.MedicamentoRequest, com.tp_sd_1.stubs.medicamento.MedicamentoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "com.tp_sd_1.stubs.medicamento.MedicamentoService", "getMedicamentoInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.tp_sd_1.stubs.medicamento.MedicamentoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.tp_sd_1.stubs.medicamento.MedicamentoResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new MedicamentoServiceMethodDescriptorSupplier("getMedicamentoInfo"))
+                  .build();
+          }
+        }
+     }
+     return getGetMedicamentoInfoMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -171,6 +203,13 @@ public final class MedicamentoServiceGrpc {
       asyncUnimplementedUnaryCall(getListarMedicamentosNombreComercialAMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getMedicamentoInfo(com.tp_sd_1.stubs.medicamento.MedicamentoRequest request,
+        io.grpc.stub.StreamObserver<com.tp_sd_1.stubs.medicamento.MedicamentoResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetMedicamentoInfoMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -194,6 +233,13 @@ public final class MedicamentoServiceGrpc {
                 com.tp_sd_1.stubs.medicamento.Pagination,
                 com.tp_sd_1.stubs.medicamento.MedicamentoList>(
                   this, METHODID_LISTAR_MEDICAMENTOS_NOMBRE_COMERCIAL_A)))
+          .addMethod(
+            getGetMedicamentoInfoMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.tp_sd_1.stubs.medicamento.MedicamentoRequest,
+                com.tp_sd_1.stubs.medicamento.MedicamentoResponse>(
+                  this, METHODID_GET_MEDICAMENTO_INFO)))
           .build();
     }
   }
@@ -239,6 +285,14 @@ public final class MedicamentoServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getListarMedicamentosNombreComercialAMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getMedicamentoInfo(com.tp_sd_1.stubs.medicamento.MedicamentoRequest request,
+        io.grpc.stub.StreamObserver<com.tp_sd_1.stubs.medicamento.MedicamentoResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetMedicamentoInfoMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -278,6 +332,13 @@ public final class MedicamentoServiceGrpc {
     public com.tp_sd_1.stubs.medicamento.MedicamentoList listarMedicamentosNombreComercialA(com.tp_sd_1.stubs.medicamento.Pagination request) {
       return blockingUnaryCall(
           getChannel(), getListarMedicamentosNombreComercialAMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.tp_sd_1.stubs.medicamento.MedicamentoResponse getMedicamentoInfo(com.tp_sd_1.stubs.medicamento.MedicamentoRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetMedicamentoInfoMethod(), getCallOptions(), request);
     }
   }
 
@@ -322,11 +383,20 @@ public final class MedicamentoServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getListarMedicamentosNombreComercialAMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.tp_sd_1.stubs.medicamento.MedicamentoResponse> getMedicamentoInfo(
+        com.tp_sd_1.stubs.medicamento.MedicamentoRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetMedicamentoInfoMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ALTA_MEDICAMENTO = 0;
   private static final int METHODID_LISTAR_MEDICAMENTOS_AEROSOL = 1;
   private static final int METHODID_LISTAR_MEDICAMENTOS_NOMBRE_COMERCIAL_A = 2;
+  private static final int METHODID_GET_MEDICAMENTO_INFO = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -356,6 +426,10 @@ public final class MedicamentoServiceGrpc {
         case METHODID_LISTAR_MEDICAMENTOS_NOMBRE_COMERCIAL_A:
           serviceImpl.listarMedicamentosNombreComercialA((com.tp_sd_1.stubs.medicamento.Pagination) request,
               (io.grpc.stub.StreamObserver<com.tp_sd_1.stubs.medicamento.MedicamentoList>) responseObserver);
+          break;
+        case METHODID_GET_MEDICAMENTO_INFO:
+          serviceImpl.getMedicamentoInfo((com.tp_sd_1.stubs.medicamento.MedicamentoRequest) request,
+              (io.grpc.stub.StreamObserver<com.tp_sd_1.stubs.medicamento.MedicamentoResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -421,6 +495,7 @@ public final class MedicamentoServiceGrpc {
               .addMethod(getAltaMedicamentoMethod())
               .addMethod(getListarMedicamentosAerosolMethod())
               .addMethod(getListarMedicamentosNombreComercialAMethod())
+              .addMethod(getGetMedicamentoInfoMethod())
               .build();
         }
       }

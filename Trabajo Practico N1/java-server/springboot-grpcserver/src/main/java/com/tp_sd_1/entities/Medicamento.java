@@ -2,26 +2,34 @@ package com.tp_sd_1.entities;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import com.tp_sd_1.entities.TipoMedicamento;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 public class Medicamento {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected long idMedicamento;
-
-	@Column(name = "codigo")
-	protected String codigo;
-
-	@Column(name = "nombreComercial ")
-	protected String nombreComercial;
-
-	@Column(name = "nombreDroga")
-	protected String nombreDroga;
+    @Id
+    private int id;
+    private String codigo;
+    private String nombreComercial;
+    private String nombreDroga;
 
 	@Column(name = "codVerificador")
 	protected int codVerificador;
@@ -40,8 +48,6 @@ public class Medicamento {
 		return tipoMedicamento;
 	}
 
-	Medicamento() {
-	}
 
 	public Medicamento(String codigo, String nombreComercial, String nombreDroga) {
 		super();
@@ -51,12 +57,14 @@ public class Medicamento {
 		setCodVerificador();
 	}
 
-	public long getIdMedicamento() {
-		return idMedicamento;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setIdMedicamento(long idMedicamento) {
-		this.idMedicamento = idMedicamento;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCodigo() {
@@ -148,7 +156,7 @@ public class Medicamento {
 
 	@Override
 	public String toString() {
-		return "Medicamento [idMedicamento=" + idMedicamento + ", codigo=" + codigo + ", nombreComercial="
+		return "Medicamento [idMedicamento=" + id + ", codigo=" + codigo + ", nombreComercial="
 				+ nombreComercial + ", nombreDroga=" + nombreDroga + ", createdAt=" + createdAt + ", updatedAt="
 				+ updatedAt + "]";
 	}

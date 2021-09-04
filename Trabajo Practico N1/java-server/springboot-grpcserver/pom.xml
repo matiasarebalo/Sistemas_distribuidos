@@ -99,6 +99,16 @@
 	</dependencies>
 
 	<build>
+		<extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.2</version>
+            </extension>
+        </extensions>
+	
+	
+	
 		<!-- to generate stub from protobuf file -->
 		<defaultGoal>clean generate-sources compile install</defaultGoal>
 		<plugins>
@@ -111,37 +121,23 @@
 			<!-- https://www.youtube.com/watch?v=JFzAe9SvNaU https://github.com/yrreddy0123/yrrhelp/tree/master/grpcDemo -->
 			<!-- compile proto file into java files. -->
 			<plugin>
-				<groupId>com.github.os72</groupId>
-				<artifactId>protoc-jar-maven-plugin</artifactId>
-				<version>3.6.0.1</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<includeMavenTypes>direct</includeMavenTypes>
-
-							<inputDirectories>
-								<include>src/main/resources/proto</include>
-							</inputDirectories>
-
-							<outputTargets>
-								<outputTarget>
-									<type>java</type>
-									<outputDirectory>src/main/java</outputDirectory>
-								</outputTarget>
-								<outputTarget>
-									<type>grpc-java</type>
-									<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.15.0</pluginArtifact>
-									<outputDirectory>src/main/java</outputDirectory>
-								</outputTarget>
-							</outputTargets>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:3.12.0:exe:${os.detected.classifier}</protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.38.0:exe:${os.detected.classifier}</pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 			<!-- Test Code Coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
