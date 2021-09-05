@@ -1,4 +1,4 @@
-from flask_restful import Resource
+'''from flask_restful import Resource
 from flask import jsonify, request
 
 class Medicamento(Resource):
@@ -73,4 +73,4 @@ class MedicamentoList(Resource):
 
         return jsonify({
             'msg': 'Medicamento creado satisfactoriamente.',
-        })
+        })'''

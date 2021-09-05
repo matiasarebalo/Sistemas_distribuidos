@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block title %}Alta medicamento{% endblock %}
+{% block content %}
+<form action="">
+    <label>Codigo numerico:</label><br>
+    <input type="text" placeholder="Codigo numerico" required><br><br>
+    <label>Nombre comercial:</label><br>
+    <input type="text" placeholder="Nombre comercial" required><br><br>
+    <label>Nombre:</label><br>
+    <input type="text" placeholder="Nombre (tipo de droga)" required><br><br>
+    <label>Tipo de medicamento:</label><br>
+    <input type="text" placeholder="Falta implementar" required><br>
+    <h3>Esto del tipo de medicamento hay que hacer que elija de todos los que hay</h3>
+    <br><br>
+    <input type="submit" value="Crear">
+  </form>
+  <br>
+  <a href="{{ url_for('homeMedicamento') }}"><button>Volver</button></a>
+{% endblock %}

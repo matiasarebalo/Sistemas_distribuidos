@@ -1,0 +1,12 @@
+{% extends "base_template.html" %}
+
+{% block title %}Medicamentos{% endblock %}
+{% block content %}
+<h1>Medicamentos</h1>
+<a href="{{ url_for('altaMedicamento') }}"><button style="margin: 5px;">Crear medicamento</button></a>
+<a href="{{ url_for('listarMedicamentosAerosol') }}"><button style="margin: 5px;">Listar medicamentos de tipo Aerosol</button></a>
+<a href="{{ url_for('listarMedicamentosNombreComercialA') }}"><button style="margin: 5px;">Listar medicamentos con nombre comercial A</button></a>
+<br>
+<a href="{{ url_for('home') }}"><button style="margin: 5px;">Volver a inicio</button></a>
+
+{% endblock %}

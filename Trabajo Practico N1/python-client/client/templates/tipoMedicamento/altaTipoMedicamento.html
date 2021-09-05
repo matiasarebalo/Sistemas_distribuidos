@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block title %}Alta tipo de medicamento{% endblock %}
+{% block content %}
+<form action="">
+    <label>Nombre:</label><br>
+    <input type="text" placeholder="Nombre del tipo de medicamento" required><br><br>
+    <br><br>
+    <input type="submit" value="Crear">
+  </form>
+  <br>
+  <a href="{{ url_for('homeTipoMedicamento') }}"><button>Volver</button></a>
+{% endblock %}
