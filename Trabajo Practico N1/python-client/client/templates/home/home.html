@@ -2,8 +2,37 @@
 
 {% block title %}Inicio{% endblock %}
 {% block content %}
-    <h1>Bienvenido</h1>
-    <a href="{{ url_for('homeMedicamento') }}"><button>Ir a medicamentos</button></a>
-    <a href="{{ url_for('homeTipoMedicamento') }}"><button>Ir a tipos de medicamentos</button></a>
+
+<div class="col-12 p-4">
+    <div class="shadow p-3 mb-2 bg-white font-weight-bold rounded text-mda-negro border-bottom border-5 border-primary">Bienvenido.</div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <a href="{{ url_for('homeMedicamento') }}" class="text-decoration-none">
+            <div class="card border-dark mb-3">
+                <div class="card-header">Medicamentos</div>
+                <div class="card-body">
+                    <h4 class="card-title">Dark card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="{{ url_for('homeTipoMedicamento') }}" class="text-decoration-none">
+            <div class="card border-dark mb-3">
+                <div class="card-header">Tipos de medicamento.</div>
+                <div class="card-body">
+                    <h4 class="card-title">Dark card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
 
 {% endblock %}

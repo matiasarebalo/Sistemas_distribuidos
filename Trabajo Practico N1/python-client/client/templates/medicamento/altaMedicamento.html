@@ -2,19 +2,58 @@
 
 {% block title %}Alta medicamento{% endblock %}
 {% block content %}
-<form action="">
-    <label>Codigo numerico:</label><br>
-    <input type="text" placeholder="Codigo numerico" required><br><br>
-    <label>Nombre comercial:</label><br>
-    <input type="text" placeholder="Nombre comercial" required><br><br>
-    <label>Nombre:</label><br>
-    <input type="text" placeholder="Nombre (tipo de droga)" required><br><br>
-    <label>Tipo de medicamento:</label><br>
-    <input type="text" placeholder="Falta implementar" required><br>
-    <h3>Esto del tipo de medicamento hay que hacer que elija de todos los que hay</h3>
-    <br><br>
-    <input type="submit" value="Crear">
-  </form>
-  <br>
-  <a href="{{ url_for('homeMedicamento') }}"><button>Volver</button></a>
+
+<div class="col-12 p-4">
+  <div class="shadow p-3 mb-2 bg-white font-weight-bold rounded text-mda-negro border-bottom border-5 border-primary">
+    Agregar medicamento.
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card border-dark mb-3">
+      <div class="card-header">Agregar tipo de Medicamento.</div>
+      <div class="card-body">
+        <div class="card-text">
+          <form action="">
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group p-2">
+                  <label>Codigo numerico:</label><br>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Codigo numerico" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group p-2">
+                  <label>Nombre comercial:</label><br>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre comercial" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group p-2">
+                  <label>Nombre:</label><br>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre (tipo de droga)" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group p-2">
+                  <label>Tipo de medicamento:</label><br>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Falta implementar" required>
+                </div>
+              </div>
+
+            </div>
+
+            <input type="submit" class="btn btn-success p-2 w-100" value="Crear">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
