@@ -3,6 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for
 #from resources.medicamento import Medicamento, MedicamentoList
 #from resources.tipoMedicamento import TipoMedicamento, TipoMedicamentoList
 
+from grpc.messages.medicamento_pb2 import *
+from grpc.messages.medicamento_pb2_grpc import *
+
+ 
 app = Flask(__name__)
 
 # Home
