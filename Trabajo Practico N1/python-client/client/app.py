@@ -16,12 +16,11 @@ def home():
 def homeTipoMedicamento():
     return render_template('tipoMedicamento/homeTipoMedicamento.html')
 
-@app.route('/tipoMedicamento/alta')
+@app.route('/tipoMedicamento/alta', methods=["POST"])
 def altaTipoMedicamento():
-    if request.method == "GET":
-        return render_template('tipoMedicamento/altaTipoMedicamento.html')
-    elif request.method == "POST":
+    if request.method == "POST":
         tipo_medicamento_form = request.form.to_dict()
+        print(tipo_medicamento_form)
         #Llamamos al proceso que hace el alta
         #...
         #Volvemos al home
@@ -39,12 +38,14 @@ def bajaTipoMedicamento(idMedicamento):
 def homeMedicamento():
     return render_template('medicamento/homeMedicamento.html')
 
-@app.route('/medicamento/alta')
+@app.route('/medicamento/alta', methods=["GET", "POST"])
 def altaMedicamento():
     if request.method == "GET":
         return render_template('medicamento/altaMedicamento.html')
     elif request.method == "POST":
+        print("Entra al post")
         medicamento_form = request.form.to_dict()
+        print(medicamento_form)
         #Llamamos al proceso que hace el alta
         #...
         #Volvemos al home

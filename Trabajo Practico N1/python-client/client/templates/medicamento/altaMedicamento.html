@@ -15,34 +15,34 @@
       <div class="card-header">Agregar tipo de Medicamento.</div>
       <div class="card-body">
         <div class="card-text">
-          <form action="">
+          <form action="{{ url_for('altaMedicamento') }}" method="post">
             <div class="row">
 
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label>Codigo numerico:</label><br>
-                  <input type="text" class="form-control p-2 mt-1" placeholder="Codigo numerico" required>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Codigo numerico" name="codigo_numerico" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label>Nombre comercial:</label><br>
-                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre comercial" required>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre comercial" name="nombre_comercial" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label>Nombre:</label><br>
-                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre (tipo de droga)" required>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre (tipo de droga)" name="nombre" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label>Tipo de medicamento:</label><br>
-                  <input type="text" class="form-control p-2 mt-1" placeholder="Falta implementar" required>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Falta implementar" name="tipo_medicamento" required>
                 </div>
               </div>
 

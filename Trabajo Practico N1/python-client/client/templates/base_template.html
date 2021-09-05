@@ -42,9 +42,11 @@
                             Medicamentos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ url_for('homeMedicamento') }}">Listado general de medicamentos</a>
+                          <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ url_for('altaMedicamento') }}">Crear medicamento</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosAerosol') }}">Listar medicamento de tipo</a>
+                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosAerosol') }}">Listar medicamento de tipo Aerosol</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ url_for('listarMedicamentosNombreComercialA') }}">Listar medicamento por n.comercial</a>
                         </div>

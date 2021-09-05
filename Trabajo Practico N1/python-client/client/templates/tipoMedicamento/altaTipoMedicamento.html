@@ -3,10 +3,10 @@
   <div class="card-header">Agregar tipo de Medicamento.</div>
   <div class="card-body">
     <div class="card-text">
-      <form action="">
+      <form action="{{ url_for('altaTipoMedicamento') }}" method="post">
         <div class="form-group pb-2">
           <label>Nombre:</label>
-          <input type="text" class="form-control p-2 mt-1" placeholder="Nombre del tipo de medicamento" required>
+          <input type="text" class="form-control p-2 mt-1" placeholder="Nombre del tipo de medicamento" name="nombre" required>
         </div>
         <input type="submit" class="btn btn-success p-2 w-100" value="Crear">
       </form>
