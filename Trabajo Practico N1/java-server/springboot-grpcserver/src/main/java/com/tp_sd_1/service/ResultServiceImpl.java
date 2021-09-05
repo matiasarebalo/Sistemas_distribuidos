@@ -39,6 +39,9 @@ public class ResultServiceImpl extends ResultServiceGrpc.ResultServiceImplBase {
             */
             ResultResponse resultResponse = ResultResponse.newBuilder()
                     .setId(id)
+                    .setCodigo(result.getCodigo())
+                    .setNombreComercial(result.getNombreComercial())
+                    .setNombreDroga(result.getNombreDroga())
                     .build();
             
             /*

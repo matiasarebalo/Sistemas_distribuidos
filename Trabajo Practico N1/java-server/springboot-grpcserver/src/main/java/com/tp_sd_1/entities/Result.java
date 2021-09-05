@@ -20,5 +20,33 @@ public class Result {
     private String codigo;
     private String nombreComercial;
     private String nombreDroga;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public String getNombreComercial() {
+		return nombreComercial;
+	}
+	public void setNombreComercial(String nombreComercial) {
+		this.nombreComercial = nombreComercial;
+	}
+	public String getNombreDroga() {
+		return nombreDroga;
+	}
+	public void setNombreDroga(String nombreDroga) {
+		this.nombreDroga = nombreDroga;
+	}
+    
+    
+    
+    
     
 }
