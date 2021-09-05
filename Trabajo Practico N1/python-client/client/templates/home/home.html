@@ -1,0 +1,9 @@
+{% extends "base_template.html" %}
+
+{% block title %}Inicio{% endblock %}
+{% block content %}
+    <h1>Bienvenido</h1>
+    <a href="{{ url_for('homeMedicamento') }}"><button>Ir a medicamentos</button></a>
+    <a href="{{ url_for('homeTipoMedicamento') }}"><button>Ir a tipos de medicamentos</button></a>
+
+{% endblock %}
