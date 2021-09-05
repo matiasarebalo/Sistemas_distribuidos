@@ -4,8 +4,8 @@ import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
-import medicamento_pb2 as medicamento__pb2
 
+from . import medicamento_pb2 as medicamento__pb2
 
 class TipoMedicamentoServiceStub(object):
     """Missing associated documentation comment in .proto file."""
