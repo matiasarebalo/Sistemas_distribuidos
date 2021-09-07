@@ -15,7 +15,28 @@ class MedicamentoClient(object):
         # bind the client and the server
         self.stub = pb2_grpc.MedicamentoServiceStub(self.channel)
 
-    def get_url(self, message):
-        message = pb2.Message(message=message)
-        print(f'{message}')
-        return self.stub.GetServerResponse(message)
+    def alta(self, medicamento):
+        response = self.stub.altaMedicamento(request=medicamento)
+        return self.stub.GetServerResponse(response)
+
+    def verificarCodigo(self, idMedicamento):
+        pass
+        #response = self.stub.altaMedicamento(request=medicamento)
+        #return self.stub.GetServerResponse(response)
+
+    def esPrioritario(self, idMedicamento):
+        pass
+        #response = self.stub.altaMedicamento(request=idMedicamento)
+        #return self.stub.GetServerResponse(response)
+
+    def listarAerosol(self, medicamento):
+        #La request no deberia ser nada no? Habria que modificar el proto.
+        pass
+        #response = self.stub.listarMedicamentosAerosol(request=medicamento)
+        #return self.stub.GetServerResponse(response)
+    
+    def listarNombreComercialA(self, medicamento):
+        #La request no deberia ser nada no? Habria que modificar el proto.
+        pass
+        #response = self.stub.listarMedicamentosAerosol(request=medicamento)
+        #return self.stub.GetServerResponse(response)

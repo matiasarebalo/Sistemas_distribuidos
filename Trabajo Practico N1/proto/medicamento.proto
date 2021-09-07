@@ -26,6 +26,8 @@ service MedicamentoService {
 	rpc altaMedicamento (Medicamento) returns (Medicamento) {};
 	rpc listarMedicamentosAerosol (Pagination) returns (MedicamentoList) {};
 	rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
+	rpc esPrioritario (CodigoNumericoRequest) returns (CodigoNumericoResponse) {};
+	rpc verificarCodigo (CodigoNumericoRequest) returns (CodigoNumericoResponse) {};
 }
 
 
@@ -57,4 +59,12 @@ message Pagination{
 message Search{
 	google.protobuf.Any filter = 1;
     	string jsonFilter = 2;
+}
+
+message CodigoNumericoRequest{
+	string codigo = 1;
+}
+
+message CodigoNumericoResponse{
+	bool resultado = 1;
 }
