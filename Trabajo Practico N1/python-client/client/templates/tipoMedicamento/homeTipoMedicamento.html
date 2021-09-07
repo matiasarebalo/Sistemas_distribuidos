@@ -19,12 +19,22 @@
               <tr>
                 <th scope="col">ID </th>
                 <th scope="col">Nombre</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Active</th>
                 <td>Column content</td>
+                <td>
+                  <div>
+                      <a href="{{ url_for('bajaTipoMedicamento', idTipoMedicamento=1) }}" class="text-decoration-none">
+                          <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
+                              <div class="card-header">Dar de baja.</div>
+                          </div>
+                      </a>
+                  </div>
+              </td>
               </tr>
             </tbody>
         </table>

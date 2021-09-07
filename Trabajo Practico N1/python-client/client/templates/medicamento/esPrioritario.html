@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+<div class="col-12 p-4">
+    <div class="shadow p-3 mb-2 bg-white font-weight-bold rounded text-mda-negro border-bottom border-5 border-primary">
+        Aca va la respuesta del server: Es o no es prioritario.
+    </div>
+</div>
+
+<div class="col-md-4" style="width: 5%;margin-left: 25px;">
+    <a href="{{ url_for('homeMedicamento') }}" class="text-decoration-none">
+        <div class="card border-dark mb-3">
+            <div class="card-header">Volver</div>
+        </div>
+    </a>
+</div>
+
+
+{% endblock%}
