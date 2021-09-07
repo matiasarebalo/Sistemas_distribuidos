@@ -22,13 +22,17 @@ service MedicamentoService {
   rpc listarMedicamentosAerosol (Pagination) returns (MedicamentoList) {};
   rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
   rpc getMedicamentoInfo(MedicamentoRequest) returns (MedicamentoResponse);
-
+  rpc buscarPorTipo(TipoMedicamento) returns (ListaPorTipos);
 }
 
 
 message MedicamentoList{
   repeated Medicamento resultList=1;
   google.protobuf.Int32Value resultCount=2;
+}
+
+message ListaPorTipos {
+  repeated MedicamentoResponse medicamentos = 1;
 }
 
 message TipoMedicamento{

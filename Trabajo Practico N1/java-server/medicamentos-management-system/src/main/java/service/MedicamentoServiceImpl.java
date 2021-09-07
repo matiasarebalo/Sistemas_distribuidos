@@ -2,9 +2,10 @@ package service;
 
 import cliente.ResultClient;
 import com.medicamentos_management.stubs.medicamento.MedicamentoServiceGrpc;
+import com.medicamentos_management.stubs.medicamento.TipoMedicamento;
 import com.medicamentos_management.stubs.medicamento.MedicamentoRequest;
 import com.medicamentos_management.stubs.medicamento.MedicamentoResponse;
-
+import com.medicamentos_management.stubs.medicamento.ListaPorTipos;
 import com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest;
 import com.medicamentos_management.stubs.medicamento.MedicamentoAltaResponse;
 
@@ -18,6 +19,7 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
@@ -98,5 +100,39 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }
+    
+    @Override
+    public void buscarPorTipo(TipoMedicamento request, StreamObserver<ListaPorTipos> responseObserver) {
+        String tipo = request.getNombre();
+
+        try {
+            List<Medicamento> medicamentos = medicamentoDao.buscarPorTipo(tipo);
+            List<MedicamentoResponse> medicamentoResponses = new ArrayList<>();
+            MedicamentoResponse medicamentoResponse;
+
+            for (Medicamento medicamento: medicamentos) {
+                medicamentoResponse = MedicamentoResponse.newBuilder()
+                        .setId(medicamento.getId())
+                        .setCodigo(medicamento.getCodigo())
+                        .setNombreComercial(medicamento.getNombreComercial())
+                        .setNombreDroga(medicamento.getNombreDroga())
+                        .setTipo(medicamento.getTipo())
+                        .build();
+
+                medicamentoResponses.add(medicamentoResponse);
+            }
+
+            ListaPorTipos listaPorTipos = ListaPorTipos.newBuilder()
+                    .addAllMedicamentos(medicamentoResponses)
+                    .build();
+
+            responseObserver.onNext(listaPorTipos);
+            responseObserver.onCompleted();
+        } catch (NoSuchElementException e) {
+            logger.log(Level.SEVERE, "NO HUBO RESULTADOS CON EL TIPO: " + tipo);
+            responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+        }
+    }
+
 
 }

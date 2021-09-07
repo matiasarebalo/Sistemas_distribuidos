@@ -6,6 +6,8 @@ import domain.TipoMedicamento;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class MedicamentoDao {
@@ -58,6 +60,18 @@ public class MedicamentoDao {
         return medicamento;
     }
 
+    public List<Medicamento> buscarPorTipo(String tipo) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
+        EntityManager em = emf.createEntityManager();
 
+        List<Medicamento> medicamentos = em.createNativeQuery("SELECT * FROM medicamento WHERE tipo = '" + tipo + "'", Medicamento.class)
+                .getResultList();
+
+        if (medicamentos == null) {
+            throw new NoSuchElementException("NO TRAJO NADA LA CONSULTA " + tipo);
+        }
+
+        return medicamentos;
+    }
 
 }
