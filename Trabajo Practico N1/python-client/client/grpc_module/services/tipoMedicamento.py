@@ -1,12 +1,11 @@
 import grpc
-import grpc_module.messages.medicamento_pb2_grpc as pb2_grpc
-import grpc_module.messages.medicamento_pb2 as pb2
-
+import grpc_module.messages.tipoMedicamento_pb2_grpc as pb2_grpc
+import grpc_module.messages.tipoMedicamento_pb2 as pb2
 
 class TipoMedicamentoClient():
     def __init__(self):
         self.host = 'localhost'
-        self.server_port = 5020
+        self.server_port = 9091
         self.channel = grpc.insecure_channel(
             '{}:{}'.format(self.host, self.server_port))
         self.stub = pb2_grpc.TipoMedicamentoServiceStub(self.channel)

@@ -9,6 +9,32 @@
     </div>
 </div>
 
+<div class="row justify-content-center px-4">
+    <div class="col-md-4">
+        <a href="{{ url_for('altaMedicamento') }}" class="text-decoration-none">
+            <div class="card border-dark mb-3">
+                <div class="card-header">Crear medicamento.</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="{{ url_for('listarMedicamentosAerosol') }}" class="text-decoration-none">
+            <div class="card border-dark mb-3">
+                <div class="card-header">Listar medicamentos de tipo Aerosol.</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="{{ url_for('listarMedicamentosNombreComercialA') }}" class="text-decoration-none">
+            <div class="card border-dark mb-3">
+                <div class="card-header">Listar medicamentos con nombre comercial A.</div>
+            </div>
+        </a>
+    </div>
+</div>
+
 <div class="col-md-12 p-4">
     <table class="table table-hover">
         <thead class="table-success">
@@ -50,32 +76,6 @@
           </tr>
         </tbody>
     </table>
-</div>
-
-<div class="row justify-content-center mt-5 px-4">
-    <div class="col-md-4">
-        <a href="{{ url_for('altaMedicamento') }}" class="text-decoration-none">
-            <div class="card border-dark mb-3">
-                <div class="card-header">Crear medicamento.</div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-md-4">
-        <a href="{{ url_for('listarMedicamentosAerosol') }}" class="text-decoration-none">
-            <div class="card border-dark mb-3">
-                <div class="card-header">Listar medicamentos de tipo Aerosol.</div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-md-4">
-        <a href="{{ url_for('listarMedicamentosNombreComercialA') }}" class="text-decoration-none">
-            <div class="card border-dark mb-3">
-                <div class="card-header">Listar medicamentos con nombre comercial A.</div>
-            </div>
-        </a>
-    </div>
 </div>
 
 {% endblock %}
