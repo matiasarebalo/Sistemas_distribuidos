@@ -1,14 +1,7 @@
 package service;
 
 import cliente.ResultClient;
-import com.medicamentos_management.stubs.medicamento.MedicamentoServiceGrpc;
-import com.medicamentos_management.stubs.medicamento.TipoMedicamento;
-import com.medicamentos_management.stubs.medicamento.MedicamentoRequest;
-import com.medicamentos_management.stubs.medicamento.MedicamentoResponse;
-import com.medicamentos_management.stubs.medicamento.ListaPorPrimeraLetraDeNombreComercial;
-import com.medicamentos_management.stubs.medicamento.ListaPorTipos;
-import com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest;
-import com.medicamentos_management.stubs.medicamento.MedicamentoAltaResponse;
+import com.medicamentos_management.stubs.medicamento.*;
 
 import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse;
 import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest;
@@ -168,4 +161,57 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
         }
     }
 
+    @Override
+    public void esPrioritario(CodigoParaVerificar request, StreamObserver<Verificado> responseObserver) {
+        boolean prioritario = false;
+
+        try {
+            if (request.getCodigo().charAt(0) == 'P' || request.getCodigo().charAt(0) == 'W') {
+                prioritario = true;
+            }
+
+            Verificado verificado = Verificado.newBuilder().setVerificado(prioritario).build();
+
+            responseObserver.onNext(verificado);
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error al verificar");
+            responseObserver.onError(Status.UNKNOWN.asRuntimeException());
+        }
+    }
+
+    @Override
+    public void verificarCodigo(CodigoParaVerificar request, StreamObserver<Verificado> responseObserver) {
+        boolean codigoCorrecto = false;
+        int valor = Integer.parseInt(request.getCodigo().substring(4, 9));
+
+        try {
+            while (valor > 9) {
+                valor = sumarCodigo(valor);
+            }
+
+            if (valor == Integer.parseInt(String.valueOf(request.getCodigo().charAt(request.getCodigo().length() - 1)))) {
+                codigoCorrecto = true;
+            }
+
+            Verificado verificado = Verificado.newBuilder().setVerificado(codigoCorrecto).build();
+
+            responseObserver.onNext(verificado);
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error al verificar");
+            responseObserver.onError(Status.UNKNOWN.asRuntimeException());
+        }
+    }
+
+    private int sumarCodigo(int codigo) {
+        String codigoCadena = String.valueOf(codigo);
+        int suma = 0;
+
+        for (char c: codigoCadena.toCharArray()) {
+            suma += Integer.parseInt(String.valueOf(c));
+        }
+
+        return suma;
+    }
 }

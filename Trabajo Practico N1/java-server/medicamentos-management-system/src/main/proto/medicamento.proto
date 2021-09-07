@@ -24,7 +24,16 @@ service MedicamentoService {
   rpc getMedicamentoInfo(MedicamentoRequest) returns (MedicamentoResponse);
   rpc buscarPorTipo(TipoMedicamento) returns (ListaPorTipos);
   rpc buscarPorPrimeraLetraDeNombreComercial(ListaPorPrimeraLetraDeNombreComercial) returns (ListaPorTipos);
+  rpc esPrioritario(CodigoParaVerificar) returns (Verificado);
+  rpc verificarCodigo(CodigoParaVerificar) returns (Verificado);
+}
 
+message CodigoParaVerificar {
+  string codigo = 1;
+}
+
+message Verificado {
+  bool verificado = 1;
 }
 
 message MedicamentoList{
@@ -53,12 +62,9 @@ message Medicamento{
   string tipo = 5;
 }
 
-
-
 message MedicamentoRequest{
   int32 id = 1;
 }
-
 
 message MedicamentoAltaRequest{
   int32 id = 1;
@@ -68,7 +74,6 @@ message MedicamentoAltaRequest{
   string tipo = 5;
 }
 
-
 message MedicamentoResponse{
   int32 id = 1;
   string codigo = 2;
@@ -77,8 +82,6 @@ message MedicamentoResponse{
   string tipo = 5;
 }
 
-
-
 message MedicamentoAltaResponse{
   int32 id = 1;
   string codigo = 2;
@@ -86,7 +89,6 @@ message MedicamentoAltaResponse{
   string nombreDroga = 4;
   string tipo = 5;
 }
-
 
 // Para ayudarnos con las queries del listar
 message Pagination{

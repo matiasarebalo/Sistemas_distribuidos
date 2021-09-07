@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 @Entity
 public class Medicamento {
