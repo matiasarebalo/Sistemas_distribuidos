@@ -73,5 +73,19 @@ public class MedicamentoDao {
 
         return medicamentos;
     }
+    
+    public List<Medicamento> buscarPorLetraNombreComercial(String letra) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
+        EntityManager em = emf.createEntityManager();
+
+        List<Medicamento> medicamentos = em.createNativeQuery("SELECT * FROM medicamento WHERE nombreComercial LIKE '" + letra +  "%'", Medicamento.class)
+                .getResultList();
+
+        if (medicamentos == null) {
+            throw new NoSuchElementException("NO TRAJO NADA LA CONSULTA POR LETRA" + letra);
+        }
+
+        return medicamentos;
+    }
 
 }

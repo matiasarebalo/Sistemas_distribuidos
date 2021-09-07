@@ -23,8 +23,9 @@ service MedicamentoService {
   rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
   rpc getMedicamentoInfo(MedicamentoRequest) returns (MedicamentoResponse);
   rpc buscarPorTipo(TipoMedicamento) returns (ListaPorTipos);
-}
+  rpc buscarPorPrimeraLetraDeNombreComercial(ListaPorPrimeraLetraDeNombreComercial) returns (ListaPorTipos);
 
+}
 
 message MedicamentoList{
   repeated Medicamento resultList=1;
@@ -33,6 +34,10 @@ message MedicamentoList{
 
 message ListaPorTipos {
   repeated MedicamentoResponse medicamentos = 1;
+}
+
+message ListaPorPrimeraLetraDeNombreComercial {
+  string letra = 1;
 }
 
 message TipoMedicamento{

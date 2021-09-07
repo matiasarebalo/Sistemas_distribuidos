@@ -5,6 +5,7 @@ import com.medicamentos_management.stubs.medicamento.MedicamentoServiceGrpc;
 import com.medicamentos_management.stubs.medicamento.TipoMedicamento;
 import com.medicamentos_management.stubs.medicamento.MedicamentoRequest;
 import com.medicamentos_management.stubs.medicamento.MedicamentoResponse;
+import com.medicamentos_management.stubs.medicamento.ListaPorPrimeraLetraDeNombreComercial;
 import com.medicamentos_management.stubs.medicamento.ListaPorTipos;
 import com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest;
 import com.medicamentos_management.stubs.medicamento.MedicamentoAltaResponse;
@@ -134,5 +135,37 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
         }
     }
 
+    @Override
+    public void buscarPorPrimeraLetraDeNombreComercial(ListaPorPrimeraLetraDeNombreComercial request, StreamObserver<ListaPorTipos> responseObserver) {
+        String letra = request.getLetra();
+
+        try {
+            List<Medicamento> medicamentos = medicamentoDao.buscarPorLetraNombreComercial(letra);
+            List<MedicamentoResponse> medicamentoResponses = new ArrayList<>();
+            MedicamentoResponse medicamentoResponse;
+
+            for (Medicamento medicamento: medicamentos) {
+                medicamentoResponse = MedicamentoResponse.newBuilder()
+                        .setId(medicamento.getId())
+                        .setCodigo(medicamento.getCodigo())
+                        .setNombreComercial(medicamento.getNombreComercial())
+                        .setNombreDroga(medicamento.getNombreDroga())
+                        .setTipo(medicamento.getTipo())
+                        .build();
+
+                medicamentoResponses.add(medicamentoResponse);
+            }
+
+            ListaPorTipos listaPorTipos = ListaPorTipos.newBuilder()
+                    .addAllMedicamentos(medicamentoResponses)
+                    .build();
+
+            responseObserver.onNext(listaPorTipos);
+            responseObserver.onCompleted();
+        } catch (NoSuchElementException e) {
+            logger.log(Level.SEVERE, "NO HUBO RESULTADOS PARA MEDICAMENTO CON NOMBRE COMERCIAL EMPEZADO EN: " + letra);
+            responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+        }
+    }
 
 }
