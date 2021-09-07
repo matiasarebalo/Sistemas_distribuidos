@@ -18,6 +18,8 @@
             <th scope="col">Nombre comercial</th>
             <th scope="col">Nombre (Tipo de droga)</th>
             <th scope="col">Tipo de medicamento</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +29,24 @@
             <td>Column content</td>
             <td>Column content</td>
             <td>Column content</td>
+            <td>
+                <div>
+                    <a href="{{ url_for('verificarCodigo', idMedicamento=1) }}" class="text-decoration-none">
+                        <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
+                            <div class="card-header">Verificar codigo de producto.</div>
+                        </div>
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a href="{{ url_for('esPrioritario', idMedicamento=1) }}" class="text-decoration-none">
+                        <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
+                            <div class="card-header">Verificar prioridad del producto.</div>
+                        </div>
+                    </a>
+                </div>
+            </td>
           </tr>
         </tbody>
     </table>

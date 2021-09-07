@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-#from resources.medicamento import Medicamento, MedicamentoList
-#from resources.tipoMedicamento import TipoMedicamento, TipoMedicamentoList
+from grpc_module.services.medicamento import MedicamentoClient
+from grpc_module.services.tipoMedicamento import TipoMedicamentoClient
 
-from grpc.messages.medicamento_pb2 import *
-from grpc.messages.medicamento_pb2_grpc import *
+medicamento_client = MedicamentoClient()
+tipo_medicamento_client = TipoMedicamentoClient()
 
- 
+
 app = Flask(__name__)
 
 # Home
@@ -24,14 +24,15 @@ def homeTipoMedicamento():
 def altaTipoMedicamento():
     if request.method == "POST":
         tipo_medicamento_form = request.form.to_dict()
-        print(tipo_medicamento_form)
-        #Llamamos al proceso que hace el alta
-        #...
-        #Volvemos al home
+        
+        #Le mandamos la data al server y el nos deberia devolver un string o lo que sea.
+        server_msg = tipo_medicamento_client.alta(tipo_medicamento_form)
+        print(server_msg)
+
         return redirect(url_for('homeTipoMedicamento'))
 
-@app.route('/tipoMedicamento/baja/<int:idMedicamento>')
-def bajaTipoMedicamento(idMedicamento):
+@app.route('/tipoMedicamento/<int:idTipoMedicamento>/baja', methods=['GET'])
+def bajaTipoMedicamento(idTipoMedicamento):
     # aca hacemos la baja logica
     # despues de la baja logica volvemos al home.
     return render_template('tipoMedicamento/homeTipoMedicamento.html')
@@ -47,7 +48,6 @@ def altaMedicamento():
     if request.method == "GET":
         return render_template('medicamento/altaMedicamento.html')
     elif request.method == "POST":
-        print("Entra al post")
         medicamento_form = request.form.to_dict()
         print(medicamento_form)
         #Llamamos al proceso que hace el alta
@@ -62,6 +62,14 @@ def listarMedicamentosAerosol():
 @app.route('/medicamento/listarNombreComercialA')
 def listarMedicamentosNombreComercialA():
     return render_template('medicamento/listarNombreComercialA.html')
+
+@app.route('/medicamento/<int:idMedicamento>/esPrioritario', methods=['GET'])
+def esPrioritario(idMedicamento):
+    return render_template('medicamento/esPrioritario.html')
+
+@app.route('/medicamento/<int:idMedicamento>/verificarCodigo', methods=['GET'])
+def verificarCodigo(idMedicamento):
+    return render_template('medicamento/verificarCodigo.html')
 
 
 if __name__ == '__main__':
