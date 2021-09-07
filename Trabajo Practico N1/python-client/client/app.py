@@ -26,7 +26,7 @@ def altaTipoMedicamento():
         tipo_medicamento_form = request.form.to_dict()
         
         #Le mandamos la data al server y el nos deberia devolver un string o lo que sea.
-        server_msg = tipo_medicamento_client.alta(tipo_medicamento_form)
+        server_msg = tipo_medicamento_client.alta(tipo_medicamento=tipo_medicamento_form)
         print(server_msg)
 
         return redirect(url_for('homeTipoMedicamento'))

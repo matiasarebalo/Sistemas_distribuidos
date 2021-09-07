@@ -3,22 +3,21 @@ import grpc_module.messages.medicamento_pb2_grpc as pb2_grpc
 import grpc_module.messages.medicamento_pb2 as pb2
 
 
-class TipoMedicamentoClient(object):
+class TipoMedicamentoClient():
     def __init__(self):
         self.host = 'localhost'
         self.server_port = 5020
-
-        # instantiate a channel
         self.channel = grpc.insecure_channel(
             '{}:{}'.format(self.host, self.server_port))
-
-        # bind the client and the server
         self.stub = pb2_grpc.TipoMedicamentoServiceStub(self.channel)
 
     def alta(self, tipo_medicamento):
-        response = self.stub.altaTipoMedicamento(tipo_medicamento)
+        #Esto donde va?
+        #a = pb2.TipoMedicamento()
+        #Que recibe esto? no recibe un json? esta bien asi?
+        response = self.stub.altaTipoMedicamento(request=tipo_medicamento)
         return self.stub.GetServerResponse(response)
 
     def baja(self, id_tipo_medicamento):
-        response = self.stub.bajaTipoMedicamento(id_tipo_medicamento)
+        response = self.stub.bajaTipoMedicamento(request=id_tipo_medicamento)
         return self.stub.GetServerResponse(response)
