@@ -2,103 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
-
 from . import medicamento_pb2 as medicamento__pb2
-
-class TipoMedicamentoServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.altaTipoMedicamento = channel.unary_unary(
-                '/TipoMedicamentoService/altaTipoMedicamento',
-                request_serializer=medicamento__pb2.TipoMedicamento.SerializeToString,
-                response_deserializer=medicamento__pb2.TipoMedicamento.FromString,
-                )
-        self.bajaTipoMedicamento = channel.unary_unary(
-                '/TipoMedicamentoService/bajaTipoMedicamento',
-                request_serializer=google_dot_protobuf_dot_wrappers__pb2.Int32Value.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
-
-
-class TipoMedicamentoServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def altaTipoMedicamento(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def bajaTipoMedicamento(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_TipoMedicamentoServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'altaTipoMedicamento': grpc.unary_unary_rpc_method_handler(
-                    servicer.altaTipoMedicamento,
-                    request_deserializer=medicamento__pb2.TipoMedicamento.FromString,
-                    response_serializer=medicamento__pb2.TipoMedicamento.SerializeToString,
-            ),
-            'bajaTipoMedicamento': grpc.unary_unary_rpc_method_handler(
-                    servicer.bajaTipoMedicamento,
-                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.Int32Value.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'TipoMedicamentoService', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class TipoMedicamentoService(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def altaTipoMedicamento(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/TipoMedicamentoService/altaTipoMedicamento',
-            medicamento__pb2.TipoMedicamento.SerializeToString,
-            medicamento__pb2.TipoMedicamento.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def bajaTipoMedicamento(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/TipoMedicamentoService/bajaTipoMedicamento',
-            google_dot_protobuf_dot_wrappers__pb2.Int32Value.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class MedicamentoServiceStub(object):
@@ -111,19 +15,49 @@ class MedicamentoServiceStub(object):
             channel: A grpc.Channel.
         """
         self.altaMedicamento = channel.unary_unary(
-                '/MedicamentoService/altaMedicamento',
-                request_serializer=medicamento__pb2.Medicamento.SerializeToString,
-                response_deserializer=medicamento__pb2.Medicamento.FromString,
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/altaMedicamento',
+                request_serializer=medicamento__pb2.MedicamentoAltaRequest.SerializeToString,
+                response_deserializer=medicamento__pb2.MedicamentoAltaResponse.FromString,
                 )
         self.listarMedicamentosAerosol = channel.unary_unary(
-                '/MedicamentoService/listarMedicamentosAerosol',
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/listarMedicamentosAerosol',
                 request_serializer=medicamento__pb2.Pagination.SerializeToString,
                 response_deserializer=medicamento__pb2.MedicamentoList.FromString,
                 )
         self.listarMedicamentosNombreComercialA = channel.unary_unary(
-                '/MedicamentoService/listarMedicamentosNombreComercialA',
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/listarMedicamentosNombreComercialA',
                 request_serializer=medicamento__pb2.Pagination.SerializeToString,
                 response_deserializer=medicamento__pb2.MedicamentoList.FromString,
+                )
+        self.getMedicamentoInfo = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/getMedicamentoInfo',
+                request_serializer=medicamento__pb2.MedicamentoRequest.SerializeToString,
+                response_deserializer=medicamento__pb2.MedicamentoResponse.FromString,
+                )
+        self.buscarPorPrimeraLetraDeNombreComercial = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/buscarPorPrimeraLetraDeNombreComercial',
+                request_serializer=medicamento__pb2.ListaPorPrimeraLetraDeNombreComercial.SerializeToString,
+                response_deserializer=medicamento__pb2.ListaPorTipos.FromString,
+                )
+        self.esPrioritario = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/esPrioritario',
+                request_serializer=medicamento__pb2.CodigoParaVerificar.SerializeToString,
+                response_deserializer=medicamento__pb2.Verificado.FromString,
+                )
+        self.verificarCodigo = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/verificarCodigo',
+                request_serializer=medicamento__pb2.CodigoParaVerificar.SerializeToString,
+                response_deserializer=medicamento__pb2.Verificado.FromString,
+                )
+        self.traerTodos = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/traerTodos',
+                request_serializer=medicamento__pb2.TraerTodosRequest.SerializeToString,
+                response_deserializer=medicamento__pb2.TraerTodosResponse.FromString,
+                )
+        self.buscarPorTipoDeMedicamento = channel.unary_unary(
+                '/com.medicamentos_management.stubs.medicamento.MedicamentoService/buscarPorTipoDeMedicamento',
+                request_serializer=medicamento__pb2.ListaPorTipoRequest.SerializeToString,
+                response_deserializer=medicamento__pb2.ListaPorTipos.FromString,
                 )
 
 
@@ -148,13 +82,49 @@ class MedicamentoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def getMedicamentoInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def buscarPorPrimeraLetraDeNombreComercial(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def esPrioritario(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def verificarCodigo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def traerTodos(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def buscarPorTipoDeMedicamento(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MedicamentoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'altaMedicamento': grpc.unary_unary_rpc_method_handler(
                     servicer.altaMedicamento,
-                    request_deserializer=medicamento__pb2.Medicamento.FromString,
-                    response_serializer=medicamento__pb2.Medicamento.SerializeToString,
+                    request_deserializer=medicamento__pb2.MedicamentoAltaRequest.FromString,
+                    response_serializer=medicamento__pb2.MedicamentoAltaResponse.SerializeToString,
             ),
             'listarMedicamentosAerosol': grpc.unary_unary_rpc_method_handler(
                     servicer.listarMedicamentosAerosol,
@@ -166,9 +136,39 @@ def add_MedicamentoServiceServicer_to_server(servicer, server):
                     request_deserializer=medicamento__pb2.Pagination.FromString,
                     response_serializer=medicamento__pb2.MedicamentoList.SerializeToString,
             ),
+            'getMedicamentoInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.getMedicamentoInfo,
+                    request_deserializer=medicamento__pb2.MedicamentoRequest.FromString,
+                    response_serializer=medicamento__pb2.MedicamentoResponse.SerializeToString,
+            ),
+            'buscarPorPrimeraLetraDeNombreComercial': grpc.unary_unary_rpc_method_handler(
+                    servicer.buscarPorPrimeraLetraDeNombreComercial,
+                    request_deserializer=medicamento__pb2.ListaPorPrimeraLetraDeNombreComercial.FromString,
+                    response_serializer=medicamento__pb2.ListaPorTipos.SerializeToString,
+            ),
+            'esPrioritario': grpc.unary_unary_rpc_method_handler(
+                    servicer.esPrioritario,
+                    request_deserializer=medicamento__pb2.CodigoParaVerificar.FromString,
+                    response_serializer=medicamento__pb2.Verificado.SerializeToString,
+            ),
+            'verificarCodigo': grpc.unary_unary_rpc_method_handler(
+                    servicer.verificarCodigo,
+                    request_deserializer=medicamento__pb2.CodigoParaVerificar.FromString,
+                    response_serializer=medicamento__pb2.Verificado.SerializeToString,
+            ),
+            'traerTodos': grpc.unary_unary_rpc_method_handler(
+                    servicer.traerTodos,
+                    request_deserializer=medicamento__pb2.TraerTodosRequest.FromString,
+                    response_serializer=medicamento__pb2.TraerTodosResponse.SerializeToString,
+            ),
+            'buscarPorTipoDeMedicamento': grpc.unary_unary_rpc_method_handler(
+                    servicer.buscarPorTipoDeMedicamento,
+                    request_deserializer=medicamento__pb2.ListaPorTipoRequest.FromString,
+                    response_serializer=medicamento__pb2.ListaPorTipos.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'MedicamentoService', rpc_method_handlers)
+            'com.medicamentos_management.stubs.medicamento.MedicamentoService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -187,9 +187,9 @@ class MedicamentoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/MedicamentoService/altaMedicamento',
-            medicamento__pb2.Medicamento.SerializeToString,
-            medicamento__pb2.Medicamento.FromString,
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/altaMedicamento',
+            medicamento__pb2.MedicamentoAltaRequest.SerializeToString,
+            medicamento__pb2.MedicamentoAltaResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -204,7 +204,7 @@ class MedicamentoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/MedicamentoService/listarMedicamentosAerosol',
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/listarMedicamentosAerosol',
             medicamento__pb2.Pagination.SerializeToString,
             medicamento__pb2.MedicamentoList.FromString,
             options, channel_credentials,
@@ -221,8 +221,110 @@ class MedicamentoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/MedicamentoService/listarMedicamentosNombreComercialA',
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/listarMedicamentosNombreComercialA',
             medicamento__pb2.Pagination.SerializeToString,
             medicamento__pb2.MedicamentoList.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getMedicamentoInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/getMedicamentoInfo',
+            medicamento__pb2.MedicamentoRequest.SerializeToString,
+            medicamento__pb2.MedicamentoResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def buscarPorPrimeraLetraDeNombreComercial(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/buscarPorPrimeraLetraDeNombreComercial',
+            medicamento__pb2.ListaPorPrimeraLetraDeNombreComercial.SerializeToString,
+            medicamento__pb2.ListaPorTipos.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def esPrioritario(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/esPrioritario',
+            medicamento__pb2.CodigoParaVerificar.SerializeToString,
+            medicamento__pb2.Verificado.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def verificarCodigo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/verificarCodigo',
+            medicamento__pb2.CodigoParaVerificar.SerializeToString,
+            medicamento__pb2.Verificado.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def traerTodos(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/traerTodos',
+            medicamento__pb2.TraerTodosRequest.SerializeToString,
+            medicamento__pb2.TraerTodosResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def buscarPorTipoDeMedicamento(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.medicamentos_management.stubs.medicamento.MedicamentoService/buscarPorTipoDeMedicamento',
+            medicamento__pb2.ListaPorTipoRequest.SerializeToString,
+            medicamento__pb2.ListaPorTipos.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

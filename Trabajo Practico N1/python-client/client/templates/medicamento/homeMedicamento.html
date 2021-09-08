@@ -21,13 +21,13 @@
     <div class="col-md-4">
         <a href="{{ url_for('listarMedicamentosAerosol') }}" class="text-decoration-none">
             <div class="card border-dark mb-3">
-                <div class="card-header">Listar medicamentos de tipo Aerosol.</div>
+                <div class="card-header">Listar medicamentos por tipo.</div>
             </div>
         </a>
     </div>
 
     <div class="col-md-4">
-        <a href="{{ url_for('listarMedicamentosNombreComercialA') }}" class="text-decoration-none">
+        <a href="{{ url_for('listarMedicamentosNombreComercial') }}" class="text-decoration-none">
             <div class="card border-dark mb-3">
                 <div class="card-header">Listar medicamentos con nombre comercial A.</div>
             </div>
@@ -39,7 +39,6 @@
     <table class="table table-hover">
         <thead class="table-success">
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">Codigo numerico</th>
             <th scope="col">Nombre comercial</th>
             <th scope="col">Nombre (Tipo de droga)</th>
@@ -49,31 +48,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Active</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>
-                <div>
-                    <a href="{{ url_for('verificarCodigo', idMedicamento=1) }}" class="text-decoration-none">
-                        <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
-                            <div class="card-header">Verificar codigo de producto.</div>
+            {% for t in g.medicamentos %}
+                <tr>
+                    <td>{{ t['codigo'] }}</td>
+                    <td>{{ t['nombreComercial'] }}</td>
+                    <td>{{ t['nombreDroga'] }}</td>
+                    <td>{{ t['tipo'] }}</td>
+                    <td>
+                        <div>
+                            <a href="{{ url_for('verificarCodigo', codigo=1) }}" class="text-decoration-none">
+                                <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
+                                    <div class="card-header">Verificar codigo de producto.</div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <a href="{{ url_for('esPrioritario', idMedicamento=1) }}" class="text-decoration-none">
-                        <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
-                            <div class="card-header">Verificar prioridad del producto.</div>
+                    </td>
+                    <td>
+                        <div>
+                            <a href="{{ url_for('esPrioritario', codigo=1) }}" class="text-decoration-none">
+                                <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
+                                    <div class="card-header">Verificar prioridad del producto.</div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </td>
-          </tr>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

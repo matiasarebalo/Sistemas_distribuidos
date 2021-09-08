@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
@@ -28,6 +29,14 @@ public class Medicamento {
 	public Medicamento(int id, String codigo, String nombreComercial, String nombreDroga, String tipo) {
 		super();
 		this.id = id;
+		this.codigo = codigo;
+		this.nombreComercial = nombreComercial;
+		this.nombreDroga = nombreDroga;
+		this.tipo = tipo;
+	}
+	
+	public Medicamento(String codigo, String nombreComercial, String nombreDroga, String tipo) {
+		super();
 		this.codigo = codigo;
 		this.nombreComercial = nombreComercial;
 		this.nombreDroga = nombreDroga;

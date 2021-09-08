@@ -22,10 +22,11 @@ service MedicamentoService {
   rpc listarMedicamentosAerosol (Pagination) returns (MedicamentoList) {};
   rpc listarMedicamentosNombreComercialA (Pagination) returns (MedicamentoList) {};
   rpc getMedicamentoInfo(MedicamentoRequest) returns (MedicamentoResponse);
-  rpc buscarPorTipo(TipoMedicamento) returns (ListaPorTipos);
   rpc buscarPorPrimeraLetraDeNombreComercial(ListaPorPrimeraLetraDeNombreComercial) returns (ListaPorTipos);
   rpc esPrioritario(CodigoParaVerificar) returns (Verificado);
   rpc verificarCodigo(CodigoParaVerificar) returns (Verificado);
+  rpc traerTodos (TraerTodosRequest) returns (TraerTodosResponse);
+  rpc buscarPorTipoDeMedicamento(ListaPorTipoRequest) returns (ListaPorTipos);
 }
 
 message CodigoParaVerificar {
@@ -47,6 +48,10 @@ message ListaPorTipos {
 
 message ListaPorPrimeraLetraDeNombreComercial {
   string letra = 1;
+}
+
+message ListaPorTipoRequest {
+  string tipo = 1;
 }
 
 message TipoMedicamento{
@@ -100,4 +105,11 @@ message Pagination{
 message Search{
   google.protobuf.Any filter = 1;
   string jsonFilter = 2;
+}
+
+message TraerTodosRequest {
+  string todos = 1;
+}
+message TraerTodosResponse {
+  repeated MedicamentoResponse todos = 1;
 }

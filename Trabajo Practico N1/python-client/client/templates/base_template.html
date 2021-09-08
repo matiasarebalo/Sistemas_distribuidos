@@ -46,9 +46,9 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ url_for('altaMedicamento') }}">Crear medicamento</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosAerosol') }}">Listar medicamento de tipo Aerosol</a>
+                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosAerosol') }}">Listar medicamento por tipo</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosNombreComercialA') }}">Listar medicamento por n.comercial</a>
+                          <a class="dropdown-item" href="{{ url_for('listarMedicamentosNombreComercial') }}">Listar medicamento por n.comercial</a>
                         </div>
                     </li>
                 </ul>
@@ -57,7 +57,17 @@
     </nav>
 
     <div class="container-fluid">
-        {% block content %}{% endblock %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success p-3 mt-1">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+
+        {% endblock %}
     </div>
 
 </body>

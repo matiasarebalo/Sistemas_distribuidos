@@ -87,5 +87,13 @@ public class MedicamentoDao {
 
         return medicamentos;
     }
+    
+    public List<Medicamento> traerTodos () {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
+        EntityManager em = emf.createEntityManager();
+        List<Medicamento> lista = em.createNativeQuery("SELECT * FROM medicamento;", Medicamento.class).getResultList();
+
+        return lista;
+    }
 
 }

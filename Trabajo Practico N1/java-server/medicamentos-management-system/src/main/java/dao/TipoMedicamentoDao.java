@@ -13,8 +13,6 @@ import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class TipoMedicamentoDao {
     public TipoMedicamento findById(int id) {
 
@@ -53,7 +51,7 @@ public class TipoMedicamentoDao {
 
         if(list != null){
 
-            // OBTENER EL ÚLTIMO ID DE LA BD
+            // OBTENER EL ULTIMO ID DE LA BD
             for( Integer i:list )
             {
                 ultimoId = i + 1;

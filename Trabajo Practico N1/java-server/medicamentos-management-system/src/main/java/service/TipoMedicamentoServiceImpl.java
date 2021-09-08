@@ -92,6 +92,7 @@ public class TipoMedicamentoServiceImpl extends TipoMedicamentoServiceGrpc.TipoM
 
             responseObserver.onNext(todosResponse);
             responseObserver.onCompleted();
+            
         } catch (NoSuchElementException e) {
             logger.log(Level.SEVERE, "NO HUBO RESULTADOS PARA LA CONSULTA");
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());

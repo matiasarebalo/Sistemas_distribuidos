@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, g
+from flask import Flask, render_template, request, flash, redirect, url_for, g
 
 from grpc_module.services.medicamento import MedicamentoClient
 from grpc_module.services.tipoMedicamento import TipoMedicamentoClient
@@ -11,6 +11,7 @@ tipo_medicamento_client = TipoMedicamentoClient()
 
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Home
 @app.route('/')
@@ -44,18 +45,26 @@ def altaTipoMedicamento():
 
         server_msg = tipo_medicamento_client.alta(nombre=data['nombre'])
         print(server_msg)
-
+        flash('Tipo de Medicamento agregado correctamente.')
         return redirect(url_for('homeTipoMedicamento'))
 
 @app.route('/tipoMedicamento/<int:idTipoMedicamento>/baja', methods=['GET'])
 def bajaTipoMedicamento(idTipoMedicamento):
     tipo_medicamento_client.baja(id_tipo_medicamento=idTipoMedicamento)
+    flash('Tipo de Medicamento dado de baja correctamente.')
     return redirect(url_for('homeTipoMedicamento'))
 
 
 # Medicamento
 @app.route('/medicamento/')
 def homeMedicamento():
+    medicamentos = medicamento_client.traer_todos()
+
+    try:
+        g.medicamentos = parsear_todos(lista=medicamentos, response_name="todos")
+    except Exception as e:
+        g.medicamentos = []
+
     return render_template('medicamento/homeMedicamento.html')
 
 @app.route('/medicamento/alta', methods=["GET", "POST"])
@@ -68,28 +77,66 @@ def altaMedicamento():
             g.tipo_medicamentos = []
         return render_template('medicamento/altaMedicamento.html')
     elif request.method == "POST":
-        medicamento_form = request.form.to_dict()
-        print(medicamento_form)
+        data = request.form.to_dict()
 
+        server_msg = medicamento_client.alta(medicamento=False)
+        print(server_msg)
+        flash('Tipo de Medicamento agregado correctamente.')
         #Llamamos al proceso que hace el alta
         #...
         #Volvemos al home
         return redirect(url_for('homeMedicamento'))
 
-@app.route('/medicamento/listarAerosol')
+@app.route('/medicamento/listarPorTipo', methods=["GET", "POST"])
 def listarMedicamentosAerosol():
-    return render_template('medicamento/listarAerosol.html')
 
-@app.route('/medicamento/listarNombreComercialA')
-def listarMedicamentosNombreComercialA():
-    return render_template('medicamento/listarNombreComercialA.html')
+    try:
+        tipo_medicamentos = tipo_medicamento_client.traer_todos()
+        g.tipo_medicamentos = parsear_todos(lista=tipo_medicamentos, response_name="todos")
+    except Exception as e:
+        g.tipo_medicamentos = []
 
-@app.route('/medicamento/<int:idMedicamento>/esPrioritario', methods=['GET'])
-def esPrioritario(idMedicamento):
+    if request.method == "GET":
+        return render_template('medicamento/listarPorTipo.html')
+    elif request.method == "POST":
+        try:
+
+            data = request.form.to_dict()
+            medicamentos = medicamento_client.listarPorTipo(data['tipo'])
+            g.medicamentos = parsear_todos(lista=medicamentos, response_name="medicamentos")
+            
+        except Exception as e:
+            g.medicamentos = []
+
+    return render_template('medicamento/listarPorTipo.html')
+
+@app.route('/medicamento/listarNombreComercial', methods=["GET", "POST"])
+def listarMedicamentosNombreComercial():
+
+    if request.method == "GET":
+        return render_template('medicamento/listarNombreComercial.html')
+    elif request.method == "POST":
+        try:
+            
+            data = request.form.to_dict()
+
+            medicamentos = medicamento_client.listarNombreComercialA(data['letra'])
+
+            g.medicamentos = parsear_todos(lista=medicamentos, response_name="medicamentos")
+            
+        except Exception as e:
+            g.medicamentos = []
+
+    return render_template('medicamento/listarNombreComercial.html')
+
+@app.route('/medicamento/<int:codigo>/esPrioritario', methods=['GET'])
+def esPrioritario(codigo):
+    response = medicamento_client.esPrioritario("333-44555-9")
+    print(response)
     return render_template('medicamento/esPrioritario.html')
 
-@app.route('/medicamento/<int:idMedicamento>/verificarCodigo', methods=['GET'])
-def verificarCodigo(idMedicamento):
+@app.route('/medicamento/<int:codigo>/verificarCodigo', methods=['GET'])
+def verificarCodigo(codigo):
     return render_template('medicamento/verificarCodigo.html')
 
 
