@@ -72,11 +72,10 @@ message MedicamentoRequest{
 }
 
 message MedicamentoAltaRequest{
-  int32 id = 1;
-  string codigo = 2;
-  string nombreComercial = 3;
-  string nombreDroga = 4;
-  string tipo = 5;
+  string codigo = 1;
+  string nombreComercial = 2;
+  string nombreDroga = 3;
+  string tipo = 4;
 }
 
 message MedicamentoResponse{

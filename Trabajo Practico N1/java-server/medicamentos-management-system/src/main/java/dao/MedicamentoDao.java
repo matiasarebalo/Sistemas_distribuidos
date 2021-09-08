@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import javax.persistence.Query;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -33,7 +35,7 @@ public class MedicamentoDao {
     }
 
 
-    public Medicamento guardarMedicamento(int id, String codigo, String nombreComercial, String nombreDroga, String tipo){
+    public Medicamento guardarMedicamento(String codigo, String nombreComercial, String nombreDroga, String tipo){
 
         // We use entity managers to manage our two entities.
         // We use the factory design pattern to get the entity manager.
@@ -41,16 +43,31 @@ public class MedicamentoDao {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
         EntityManager em = emf.createEntityManager();
 
+        String medicamentoTable = "Medicamento";
+        String e = "id";
+        Query query = em.createQuery("Select " + e + " from " + medicamentoTable + " order by " + e + " desc");
+        List<Integer> list = (List<Integer>) query.setMaxResults(1).getResultList();
 
-        Medicamento medicamento = new Medicamento(id, codigo, nombreComercial, nombreDroga, tipo);
+        int ultimoId = 0;
+
+        if(list != null){
+
+            // OBTENER EL ULTIMO ID DE LA BD
+            for( Integer i:list )
+            {
+                ultimoId = i + 1;
+            }
+
+        }
+
+        Medicamento medicamento = new Medicamento(ultimoId, codigo, nombreComercial, nombreDroga, tipo);
 
         try {
             em.getTransaction().begin();
             em.persist(medicamento);
             em.getTransaction().commit();
-        } catch (Exception e) {
-
-            e.printStackTrace();
+        } catch (Exception excepcion) {
+            excepcion.printStackTrace();
         }finally {
             em.close();
         }

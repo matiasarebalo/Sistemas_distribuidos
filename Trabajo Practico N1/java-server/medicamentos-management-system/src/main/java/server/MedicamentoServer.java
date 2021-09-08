@@ -3,7 +3,7 @@ package server;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import service.MedicamentoServiceImpl;
-//import service.MedicamentoServiceImpl;
+
 import service.TipoMedicamentoServiceImpl;
 
 import java.io.IOException;

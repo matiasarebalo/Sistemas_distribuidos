@@ -22,7 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoServiceImplBase {
-	
+
     private MedicamentoDao medicamentoDao = new MedicamentoDao();
     private static final Logger logger = Logger.getLogger(MedicamentoServiceImpl.class.getName());
 
@@ -33,8 +33,8 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
         try{
             Medicamento medicamento = medicamentoDao.findById(id);
 
-           // List<String> resultResponse = getResults(id);
-            
+            // List<String> resultResponse = getResults(id);
+
             MedicamentoResponse medicamentoResponse = MedicamentoResponse.newBuilder()
                     .setId(id)
                     .setCodigo(medicamento.getCodigo())
@@ -45,7 +45,7 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
 
             responseObserver.onNext(medicamentoResponse);
             responseObserver.onCompleted();
-            
+
         }catch (NoSuchElementException e){
             logger.log(Level.SEVERE, "NO STUDENT FOUND WITH THE MEDICAMENTO ID :- "+id);
 
@@ -70,17 +70,16 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
 
     @Override
     public void altaMedicamento(MedicamentoAltaRequest request, StreamObserver<MedicamentoAltaResponse> responseObserver) {
-        int id = request.getId();
         String codigo = request.getCodigo();
         String nombreComercial = request.getNombreComercial();
         String nombreDroga = request.getNombreDroga();
         String tipo = request.getTipo();
 
         try{
-            Medicamento medicamento = medicamentoDao.guardarMedicamento(id, codigo, nombreComercial, nombreDroga, tipo); // Let's find the student information from the student table
+            Medicamento medicamento = medicamentoDao.guardarMedicamento(codigo, nombreComercial, nombreDroga, tipo); // Let's find the student information from the student table
 
             MedicamentoAltaResponse medicamentoResponse = MedicamentoAltaResponse.newBuilder()
-                    .setId(id)
+                    .setId(medicamento.getId())
                     .setCodigo(medicamento.getCodigo())
                     .setNombreComercial(medicamento.getNombreComercial())
                     .setNombreDroga(medicamento.getNombreDroga())
@@ -89,14 +88,14 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
 
             responseObserver.onNext(medicamentoResponse);
             responseObserver.onCompleted();
-            
+
         }catch (NoSuchElementException e){
-            logger.log(Level.SEVERE, "NO MEDICAMENTO FOUND WITH THE MEDICAMENTO ID :- "+id);
+            logger.log(Level.SEVERE, "NO MEDICAMENTO FOUND WITH THE MEDICAMENTO ID :- "+ codigo);
 
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }
-  
+
 
     @Override
     public void buscarPorPrimeraLetraDeNombreComercial(ListaPorPrimeraLetraDeNombreComercial request, StreamObserver<ListaPorTipos> responseObserver) {
@@ -135,35 +134,35 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
     public void buscarPorTipoDeMedicamento(ListaPorTipoRequest request, StreamObserver<ListaPorTipos> responseObserver) {
         String tipo = request.getTipo();
 
-	    try {
-	        List<Medicamento> medicamentos = medicamentoDao.buscarPorTipo(tipo);
-	        List<MedicamentoResponse> medicamentoResponses = new ArrayList<>();
-	        MedicamentoResponse medicamentoResponse;
-	
-	        for (Medicamento medicamento: medicamentos) {
-	            medicamentoResponse = MedicamentoResponse.newBuilder()
-	                    .setId(medicamento.getId())
-	                    .setCodigo(medicamento.getCodigo())
-	                    .setNombreComercial(medicamento.getNombreComercial())
-	                    .setNombreDroga(medicamento.getNombreDroga())
-	                    .setTipo(medicamento.getTipo())
-	                    .build();
-	
-	            medicamentoResponses.add(medicamentoResponse);
-	        }
-	
-	        ListaPorTipos listaPorTipos = ListaPorTipos.newBuilder()
-	                .addAllMedicamentos(medicamentoResponses)
-	                .build();
-	
-	        responseObserver.onNext(listaPorTipos);
-	        responseObserver.onCompleted();
-	    } catch (NoSuchElementException e) {
-	        logger.log(Level.SEVERE, "NO HUBO RESULTADOS CON EL TIPO: " + tipo);
-	        responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
-	    }
+        try {
+            List<Medicamento> medicamentos = medicamentoDao.buscarPorTipo(tipo);
+            List<MedicamentoResponse> medicamentoResponses = new ArrayList<>();
+            MedicamentoResponse medicamentoResponse;
+
+            for (Medicamento medicamento: medicamentos) {
+                medicamentoResponse = MedicamentoResponse.newBuilder()
+                        .setId(medicamento.getId())
+                        .setCodigo(medicamento.getCodigo())
+                        .setNombreComercial(medicamento.getNombreComercial())
+                        .setNombreDroga(medicamento.getNombreDroga())
+                        .setTipo(medicamento.getTipo())
+                        .build();
+
+                medicamentoResponses.add(medicamentoResponse);
+            }
+
+            ListaPorTipos listaPorTipos = ListaPorTipos.newBuilder()
+                    .addAllMedicamentos(medicamentoResponses)
+                    .build();
+
+            responseObserver.onNext(listaPorTipos);
+            responseObserver.onCompleted();
+        } catch (NoSuchElementException e) {
+            logger.log(Level.SEVERE, "NO HUBO RESULTADOS CON EL TIPO: " + tipo);
+            responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+        }
     }
-	    
+
     @Override
     public void traerTodos(com.medicamentos_management.stubs.medicamento.TraerTodosRequest request, StreamObserver<com.medicamentos_management.stubs.medicamento.TraerTodosResponse> responseObserver) {
         try {
@@ -172,7 +171,7 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
             List<MedicamentoResponse> tipos = new ArrayList<>();
 
             for (Medicamento t: lista) {
-            	medicamentoResponse = MedicamentoResponse.newBuilder()
+                medicamentoResponse = MedicamentoResponse.newBuilder()
                         .setId(t.getId())
                         .setCodigo(t.getCodigo())
                         .setNombreComercial(t.getNombreComercial())
@@ -189,7 +188,7 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
 
             responseObserver.onNext(todosResponse);
             responseObserver.onCompleted();
-            
+
         } catch (NoSuchElementException e) {
             logger.log(Level.SEVERE, "NO HUBO RESULTADOS PARA LA CONSULTA");
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
@@ -199,7 +198,7 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
     @Override
     public void esPrioritario(CodigoParaVerificar request, StreamObserver<Verificado> responseObserver) {
         boolean prioritario = false;
-        
+
         try {
             if (request.getCodigo().charAt(0) == 'P' || request.getCodigo().charAt(0) == 'W') {
                 prioritario = true;
