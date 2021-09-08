@@ -17,8 +17,8 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/any.proto";
 
 service TipoMedicamentoService{
-  rpc altaTipoMedicamento (TipoMedicamentoRequest) returns (TipoMedicamentoResponse) {};
-  rpc bajaTipoMedicamento (IdBajaRequest) returns (IdBajaRequest) {};
+  rpc altaTipoMedicamento (AltaTipoMedicamentoRequest) returns (AltaTipoMedicamentoResponse) {};
+  rpc bajaTipoMedicamento (IdBajaRequest) returns (IdBajaResponse) {};
   rpc getTipoMedicamentoInfo(TipoMedicamentoRequest) returns (TipoMedicamentoResponse);
 }
 
@@ -26,12 +26,27 @@ message IdBajaRequest{
   int32 id = 1;
 }
 
-message TipoMedicamentoRequest{
-  int32 id = 1;
-  string nombre = 2;
+message IdBajaResponse{
+  string baja= 1;
 }
 
-message TipoMedicamentoResponse{
+
+message AltaTipoMedicamentoRequest{
+  string nombre = 1;
+}
+
+message AltaTipoMedicamentoResponse{
   int32 id = 1;
   string nombre = 2;
+  bool activo = 3;
+}
+
+
+message TipoMedicamentoRequest{
+  int32 id = 1;
+}
+message TipoMedicamentoResponse {
+  int32 id = 1;
+  string nombre = 2;
+  bool activo = 3;
 }
