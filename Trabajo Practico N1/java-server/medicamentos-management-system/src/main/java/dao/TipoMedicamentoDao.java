@@ -5,7 +5,7 @@ import domain.TipoMedicamento;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -73,12 +73,9 @@ public class TipoMedicamentoDao {
             em.close();
         }
 
-
         // If everything worked fine, return the result.
         return tipo;
     }
-
-
 
     public int bajaTipo(int id){
 
@@ -87,7 +84,6 @@ public class TipoMedicamentoDao {
         // Here we should provide the name of the persistence unit that we provided in the persistence.xml file.
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
         EntityManager em = emf.createEntityManager();
-
 
         TipoMedicamento tipo = this.findById(id);
         tipo.setActivo(false);
@@ -102,7 +98,6 @@ public class TipoMedicamentoDao {
         }finally {
             em.close();
         }
-
 
         // If everything worked fine, return the result.
         return 1;
