@@ -35,17 +35,17 @@
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label>Nombre:</label><br>
-                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre (tipo de droga)" name="nombre" required>
+                  <input type="text" class="form-control p-2 mt-1" placeholder="Nombre (tipo de droga)" name="nombre_droga" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group p-2">
                   <label id="tipo">Tipo de medicamento:</label><br>
-                  <select id="tipo" class="form-control p-2 mt-1" name="tipo">
+                  <select id="tipo" class="form-control p-2 mt-1" name="tipo" required>
                     <option value="" disabled selected>Haga clic para elegir un tipo de medicamento</option>
                     {% for t in g.tipo_medicamentos %}
-                      <option value="{{t}}" class="dropdown-item">{{t['nombre']}}</option>
+                      <option value="{{t['nombre']}}" class="dropdown-item">{{t['nombre']}}</option>
                     {% endfor %}
                   </select>
                 </div>

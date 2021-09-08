@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'P\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11medicamento.proto\x12-com.medicamentos_management.stubs.medicamento\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x19google/protobuf/any.proto\"%\n\x13\x43odigoParaVerificar\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\" \n\nVerificado\x12\x12\n\nverificado\x18\x01 \x01(\x08\"\x93\x01\n\x0fMedicamentoList\x12N\n\nresultList\x18\x01 \x03(\x0b\x32:.com.medicamentos_management.stubs.medicamento.Medicamento\x12\x30\n\x0bresultCount\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\"i\n\rListaPorTipos\x12X\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse\"6\n%ListaPorPrimeraLetraDeNombreComercial\x12\r\n\x05letra\x18\x01 \x01(\t\"#\n\x13ListaPorTipoRequest\x12\x0c\n\x04tipo\x18\x01 \x01(\t\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"e\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\" \n\x12MedicamentoRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"p\n\x16MedicamentoAltaRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\"m\n\x13MedicamentoResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\"q\n\x17MedicamentoAltaResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\"s\n\nPagination\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\x10\n\x08pageSize\x18\x02 \x01(\x05\x12\x45\n\x06search\x18\x03 \x01(\x0b\x32\x35.com.medicamentos_management.stubs.medicamento.Search\"B\n\x06Search\x12$\n\x06\x66ilter\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x12\n\njsonFilter\x18\x02 \x01(\t\"\"\n\x11TraerTodosRequest\x12\r\n\x05todos\x18\x01 \x01(\t\"g\n\x12TraerTodosResponse\x12Q\n\x05todos\x18\x01 \x03(\x0b\x32\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse2\xae\x0b\n\x12MedicamentoService\x12\xa2\x01\n\x0f\x61ltaMedicamento\x12\x45.com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest\x1a\x46.com.medicamentos_management.stubs.medicamento.MedicamentoAltaResponse\"\x00\x12\x98\x01\n\x19listarMedicamentosAerosol\x12\x39.com.medicamentos_management.stubs.medicamento.Pagination\x1a>.com.medicamentos_management.stubs.medicamento.MedicamentoList\"\x00\x12\xa1\x01\n\"listarMedicamentosNombreComercialA\x12\x39.com.medicamentos_management.stubs.medicamento.Pagination\x1a>.com.medicamentos_management.stubs.medicamento.MedicamentoList\"\x00\x12\x9b\x01\n\x12getMedicamentoInfo\x12\x41.com.medicamentos_management.stubs.medicamento.MedicamentoRequest\x1a\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse\x12\xbc\x01\n&buscarPorPrimeraLetraDeNombreComercial\x12T.com.medicamentos_management.stubs.medicamento.ListaPorPrimeraLetraDeNombreComercial\x1a<.com.medicamentos_management.stubs.medicamento.ListaPorTipos\x12\x8e\x01\n\resPrioritario\x12\x42.com.medicamentos_management.stubs.medicamento.CodigoParaVerificar\x1a\x39.com.medicamentos_management.stubs.medicamento.Verificado\x12\x90\x01\n\x0fverificarCodigo\x12\x42.com.medicamentos_management.stubs.medicamento.CodigoParaVerificar\x1a\x39.com.medicamentos_management.stubs.medicamento.Verificado\x12\x91\x01\n\ntraerTodos\x12@.com.medicamentos_management.stubs.medicamento.TraerTodosRequest\x1a\x41.com.medicamentos_management.stubs.medicamento.TraerTodosResponse\x12\x9e\x01\n\x1a\x62uscarPorTipoDeMedicamento\x12\x42.com.medicamentos_management.stubs.medicamento.ListaPorTipoRequest\x1a<.com.medicamentos_management.stubs.medicamento.ListaPorTiposB\x02P\x01\x62\x06proto3'
+  serialized_pb=b'\n\x11medicamento.proto\x12-com.medicamentos_management.stubs.medicamento\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x19google/protobuf/any.proto\"%\n\x13\x43odigoParaVerificar\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\" \n\nVerificado\x12\x12\n\nverificado\x18\x01 \x01(\x08\"\x93\x01\n\x0fMedicamentoList\x12N\n\nresultList\x18\x01 \x03(\x0b\x32:.com.medicamentos_management.stubs.medicamento.Medicamento\x12\x30\n\x0bresultCount\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\"i\n\rListaPorTipos\x12X\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse\"6\n%ListaPorPrimeraLetraDeNombreComercial\x12\r\n\x05letra\x18\x01 \x01(\t\"#\n\x13ListaPorTipoRequest\x12\x0c\n\x04tipo\x18\x01 \x01(\t\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"e\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\" \n\x12MedicamentoRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"d\n\x16MedicamentoAltaRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x02 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x03 \x01(\t\x12\x0c\n\x04tipo\x18\x04 \x01(\t\"m\n\x13MedicamentoResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\"q\n\x17MedicamentoAltaResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x17\n\x0fnombreComercial\x18\x03 \x01(\t\x12\x13\n\x0bnombreDroga\x18\x04 \x01(\t\x12\x0c\n\x04tipo\x18\x05 \x01(\t\"s\n\nPagination\x12\x0c\n\x04page\x18\x01 \x01(\x05\x12\x10\n\x08pageSize\x18\x02 \x01(\x05\x12\x45\n\x06search\x18\x03 \x01(\x0b\x32\x35.com.medicamentos_management.stubs.medicamento.Search\"B\n\x06Search\x12$\n\x06\x66ilter\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x12\n\njsonFilter\x18\x02 \x01(\t\"\"\n\x11TraerTodosRequest\x12\r\n\x05todos\x18\x01 \x01(\t\"g\n\x12TraerTodosResponse\x12Q\n\x05todos\x18\x01 \x03(\x0b\x32\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse2\xae\x0b\n\x12MedicamentoService\x12\xa2\x01\n\x0f\x61ltaMedicamento\x12\x45.com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest\x1a\x46.com.medicamentos_management.stubs.medicamento.MedicamentoAltaResponse\"\x00\x12\x98\x01\n\x19listarMedicamentosAerosol\x12\x39.com.medicamentos_management.stubs.medicamento.Pagination\x1a>.com.medicamentos_management.stubs.medicamento.MedicamentoList\"\x00\x12\xa1\x01\n\"listarMedicamentosNombreComercialA\x12\x39.com.medicamentos_management.stubs.medicamento.Pagination\x1a>.com.medicamentos_management.stubs.medicamento.MedicamentoList\"\x00\x12\x9b\x01\n\x12getMedicamentoInfo\x12\x41.com.medicamentos_management.stubs.medicamento.MedicamentoRequest\x1a\x42.com.medicamentos_management.stubs.medicamento.MedicamentoResponse\x12\xbc\x01\n&buscarPorPrimeraLetraDeNombreComercial\x12T.com.medicamentos_management.stubs.medicamento.ListaPorPrimeraLetraDeNombreComercial\x1a<.com.medicamentos_management.stubs.medicamento.ListaPorTipos\x12\x8e\x01\n\resPrioritario\x12\x42.com.medicamentos_management.stubs.medicamento.CodigoParaVerificar\x1a\x39.com.medicamentos_management.stubs.medicamento.Verificado\x12\x90\x01\n\x0fverificarCodigo\x12\x42.com.medicamentos_management.stubs.medicamento.CodigoParaVerificar\x1a\x39.com.medicamentos_management.stubs.medicamento.Verificado\x12\x91\x01\n\ntraerTodos\x12@.com.medicamentos_management.stubs.medicamento.TraerTodosRequest\x1a\x41.com.medicamentos_management.stubs.medicamento.TraerTodosResponse\x12\x9e\x01\n\x1a\x62uscarPorTipoDeMedicamento\x12\x42.com.medicamentos_management.stubs.medicamento.ListaPorTipoRequest\x1a<.com.medicamentos_management.stubs.medicamento.ListaPorTiposB\x02P\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -368,36 +368,29 @@ _MEDICAMENTOALTAREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='codigo', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.codigo', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='codigo', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.codigo', index=1,
+      name='nombreComercial', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.nombreComercial', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='nombreComercial', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.nombreComercial', index=2,
+      name='nombreDroga', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.nombreDroga', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='nombreDroga', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.nombreDroga', index=3,
+      name='tipo', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.tipo', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='tipo', full_name='com.medicamentos_management.stubs.medicamento.MedicamentoAltaRequest.tipo', index=4,
-      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -415,7 +408,7 @@ _MEDICAMENTOALTAREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=763,
-  serialized_end=875,
+  serialized_end=863,
 )
 
 
@@ -474,8 +467,8 @@ _MEDICAMENTORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=877,
-  serialized_end=986,
+  serialized_start=865,
+  serialized_end=974,
 )
 
 
@@ -534,8 +527,8 @@ _MEDICAMENTOALTARESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=988,
-  serialized_end=1101,
+  serialized_start=976,
+  serialized_end=1089,
 )
 
 
@@ -580,8 +573,8 @@ _PAGINATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1103,
-  serialized_end=1218,
+  serialized_start=1091,
+  serialized_end=1206,
 )
 
 
@@ -619,8 +612,8 @@ _SEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1220,
-  serialized_end=1286,
+  serialized_start=1208,
+  serialized_end=1274,
 )
 
 
@@ -651,8 +644,8 @@ _TRAERTODOSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1288,
-  serialized_end=1322,
+  serialized_start=1276,
+  serialized_end=1310,
 )
 
 
@@ -683,8 +676,8 @@ _TRAERTODOSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1324,
-  serialized_end=1427,
+  serialized_start=1312,
+  serialized_end=1415,
 )
 
 _MEDICAMENTOLIST.fields_by_name['resultList'].message_type = _MEDICAMENTO
@@ -833,8 +826,8 @@ _MEDICAMENTOSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1430,
-  serialized_end=2884,
+  serialized_start=1418,
+  serialized_end=2872,
   methods=[
   _descriptor.MethodDescriptor(
     name='altaMedicamento',

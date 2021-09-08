@@ -11,16 +11,15 @@ class MedicamentoClient(object):
             '{}:{}'.format(self.host, self.server_port))
         self.stub = pb2_grpc.MedicamentoServiceStub(self.channel)
 
-    def alta(self, medicamento): 
-        response = self.stub.altaMedicamento({   
-            "id": 444,
-            "codigo": "codigo1",
-            "nombreComercial": "nombreComercial1",
-            "nombreDroga": "nombreDroga1",
-            "tipo": "tipo1"
-        })
-        
-        return self.stub.GetServerResponse(response)
+    def alta(self, codigo, nombreComercial, nombreDroga, tipo): 
+        response = pb2.MedicamentoAltaRequest(
+            codigo = codigo,
+            nombreComercial = nombreComercial,
+            nombreDroga = nombreDroga,
+            tipo = tipo
+        )
+
+        return self.stub.altaMedicamento(response)
 
     def verificarCodigo(self, codigo):
         response = pb2.CodigoParaVerificar(codigo=codigo)

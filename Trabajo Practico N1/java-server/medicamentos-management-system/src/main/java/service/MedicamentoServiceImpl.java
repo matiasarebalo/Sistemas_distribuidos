@@ -1,6 +1,8 @@
 package service;
 
 import cliente.ResultClient;
+
+import com.google.common.primitives.Booleans;
 import com.medicamentos_management.stubs.medicamento.*;
 
 import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse;
@@ -205,6 +207,8 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
             }
 
             Verificado verificado = Verificado.newBuilder().setVerificado(prioritario).build();
+            
+            System.out.println(prioritario);
 
             responseObserver.onNext(verificado);
             responseObserver.onCompleted();
@@ -229,7 +233,7 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
             }
 
             Verificado verificado = Verificado.newBuilder().setVerificado(codigoCorrecto).build();
-
+                        
             responseObserver.onNext(verificado);
             responseObserver.onCompleted();
         } catch (Exception e) {

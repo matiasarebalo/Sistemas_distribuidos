@@ -4,7 +4,6 @@ import grpc
 
 from . import medicamento_pb2 as medicamento__pb2
 
-
 class MedicamentoServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 

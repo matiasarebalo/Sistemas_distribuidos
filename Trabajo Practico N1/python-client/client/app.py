@@ -80,12 +80,14 @@ def altaMedicamento():
     elif request.method == "POST":
         data = request.form.to_dict()
 
-        server_msg = medicamento_client.alta(medicamento=False)
+        server_msg = medicamento_client.alta(
+            data['codigo_numerico'], 
+            data['nombre_comercial'], 
+            data['nombre_droga'],
+            data['tipo']
+        ) 
         print(server_msg)
-        flash('Tipo de Medicamento agregado correctamente.')
-        #Llamamos al proceso que hace el alta
-        #...
-        #Volvemos al home
+        flash('Medicamento agregado correctamente.')
         return redirect(url_for('homeMedicamento'))
 
 @app.route('/medicamento/listarPorTipo', methods=["GET", "POST"])
