@@ -5,7 +5,8 @@ import domain.TipoMedicamento;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
+import javax.persistence.Query;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
