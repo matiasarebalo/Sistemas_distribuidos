@@ -132,16 +132,25 @@ def listarMedicamentosNombreComercial():
 
     return render_template('medicamento/listarNombreComercial.html')
 
-@app.route('/medicamento/<int:codigo>/esPrioritario', methods=['GET'])
+@app.route('/medicamento/<string:codigo>/esPrioritario', methods=['GET'])
 def esPrioritario(codigo):
-    print("---------------------------------------- ARRANCA --------------------------")
-    response = medicamento_client.esPrioritario("333-44555-9")
-    print(MessageToDict(response))
-    print("---------------------------------------- TERMINA --------------------------")
+    response = medicamento_client.esPrioritario(codigo)
+    response = MessageToDict(response)
+    if response:
+        g.verificado = True
+    else:
+        g.verificado = False
     return render_template('medicamento/esPrioritario.html')
 
-@app.route('/medicamento/<int:codigo>/verificarCodigo', methods=['GET'])
+@app.route('/medicamento/<string:codigo>/verificarCodigo', methods=['GET'])
 def verificarCodigo(codigo):
+    print(codigo)
+    response = medicamento_client.verificarCodigo(codigo)
+    response = MessageToDict(response)
+    if response:
+        g.verificado = True
+    else:
+        g.verificado = False
     return render_template('medicamento/verificarCodigo.html')
 
 

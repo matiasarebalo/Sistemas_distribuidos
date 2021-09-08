@@ -4,7 +4,11 @@
 
 <div class="col-12 p-4">
     <div class="shadow p-3 mb-2 bg-white font-weight-bold rounded text-mda-negro border-bottom border-5 border-primary">
-        Aca va la respuesta del server: El codigo esta bien o esta mal.
+        {% if g.verificado %}
+        El digito verificador es correcto.
+        {% else %}
+        El digito verificador no es correcto o el codigo numerico no tiene el formato correcto. 
+        {%endif%}
     </div>
 </div>
 

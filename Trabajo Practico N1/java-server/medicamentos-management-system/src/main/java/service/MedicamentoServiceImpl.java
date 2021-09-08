@@ -221,8 +221,10 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
     @Override
     public void verificarCodigo(CodigoParaVerificar request, StreamObserver<Verificado> responseObserver) {
         boolean codigoCorrecto = false;
-        int valor = Integer.parseInt(request.getCodigo().substring(4, 9));
-
+        
+        try {
+        	int valor = Integer.parseInt(request.getCodigo().substring(4, 9));
+        
         try {
             while (valor > 9) {
                 valor = sumarCodigo(valor);
@@ -239,6 +241,12 @@ public class MedicamentoServiceImpl extends MedicamentoServiceGrpc.MedicamentoSe
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error al verificar");
             responseObserver.onError(Status.UNKNOWN.asRuntimeException());
+        }
+        }
+        catch(Exception e) {
+        	Verificado verificado = Verificado.newBuilder().setVerificado(false).build();
+        	responseObserver.onNext(verificado);
+            responseObserver.onCompleted();
         }
     }
 

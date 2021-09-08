@@ -4,7 +4,11 @@
 
 <div class="col-12 p-4">
     <div class="shadow p-3 mb-2 bg-white font-weight-bold rounded text-mda-negro border-bottom border-5 border-primary">
-        Aca va la respuesta del server: Es o no es prioritario.
+        {% if g.verificado %}
+        El codigo es prioritario.
+        {% else %}
+        No, el codigo no es prioritario.
+        {%endif%}
     </div>
 </div>
 
