@@ -1018,27 +1018,5 @@
         <dia:connection handle="1" to="O7" connection="10"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O23">
-      <dia:attribute name="obj_pos">
-        <dia:point val="18.7671,23.5087"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="18.7156,23.4572;18.861,24.9519"/>
-      </dia:attribute>
-      <dia:attribute name="conn_endpoints">
-        <dia:point val="18.7671,23.5087"/>
-        <dia:point val="18.8095,24.9004"/>
-      </dia:attribute>
-      <dia:attribute name="numcp">
-        <dia:int val="1"/>
-      </dia:attribute>
-      <dia:attribute name="line_width">
-        <dia:real val="0.10000000149011612"/>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O20" connection="13"/>
-        <dia:connection handle="1" to="O8" connection="2"/>
-      </dia:connections>
-    </dia:object>
   </dia:layer>
 </dia:diagram>
