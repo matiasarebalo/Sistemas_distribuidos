@@ -63,14 +63,5 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Franco/.m2/repository/org/apache/tomcat/annotations-api/6.0.53/annotations-api-6.0.53.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.apache.tomcat"/>
-			<attribute name="maven.artifactId" value="annotations-api"/>
-			<attribute name="maven.version" value="6.0.53"/>
-			<attribute name="maven.scope" value="provided"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

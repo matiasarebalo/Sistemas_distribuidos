@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'P\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15tipoMedicamento.proto\x12\x31\x63om.medicamentos_management.stubs.tipoMedicamento\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x19google/protobuf/any.proto\"\x1b\n\rIdBajaRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"4\n\x16TipoMedicamentoRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"5\n\x17TipoMedicamentoResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t2\x99\x04\n\x16TipoMedicamentoService\x12\xae\x01\n\x13\x61ltaTipoMedicamento\x12I.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest\x1aJ.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse\"\x00\x12\x9b\x01\n\x13\x62\x61jaTipoMedicamento\x12@.com.medicamentos_management.stubs.tipoMedicamento.IdBajaRequest\x1a@.com.medicamentos_management.stubs.tipoMedicamento.IdBajaRequest\"\x00\x12\xaf\x01\n\x16getTipoMedicamentoInfo\x12I.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest\x1aJ.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponseB\x02P\x01\x62\x06proto3'
+  serialized_pb=b'\n\x15tipoMedicamento.proto\x12\x31\x63om.medicamentos_management.stubs.tipoMedicamento\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x19google/protobuf/any.proto\"\x1b\n\rIdBajaRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\x1e\n\x0eIdBajaResponse\x12\x0c\n\x04\x62\x61ja\x18\x01 \x01(\t\",\n\x1a\x41ltaTipoMedicamentoRequest\x12\x0e\n\x06nombre\x18\x01 \x01(\t\"I\n\x1b\x41ltaTipoMedicamentoResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0e\n\x06\x61\x63tivo\x18\x03 \x01(\x08\"$\n\x16TipoMedicamentoRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"E\n\x17TipoMedicamentoResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0e\n\x06\x61\x63tivo\x18\x03 \x01(\x08\"\"\n\x11TraerTodosRequest\x12\r\n\x05todos\x18\x01 \x01(\t\"o\n\x12TraerTodosResponse\x12Y\n\x05todos\x18\x01 \x03(\x0b\x32J.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse2\xbe\x05\n\x16TipoMedicamentoService\x12\xb6\x01\n\x13\x61ltaTipoMedicamento\x12M.com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoRequest\x1aN.com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse\"\x00\x12\x9c\x01\n\x13\x62\x61jaTipoMedicamento\x12@.com.medicamentos_management.stubs.tipoMedicamento.IdBajaRequest\x1a\x41.com.medicamentos_management.stubs.tipoMedicamento.IdBajaResponse\"\x00\x12\xaf\x01\n\x16getTipoMedicamentoInfo\x12I.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest\x1aJ.com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse\x12\x99\x01\n\ntraerTodos\x12\x44.com.medicamentos_management.stubs.tipoMedicamento.TraerTodosRequest\x1a\x45.com.medicamentos_management.stubs.tipoMedicamento.TraerTodosResponseB\x02P\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -61,24 +61,17 @@ _IDBAJAREQUEST = _descriptor.Descriptor(
 )
 
 
-_TIPOMEDICAMENTOREQUEST = _descriptor.Descriptor(
-  name='TipoMedicamentoRequest',
-  full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest',
+_IDBAJARESPONSE = _descriptor.Descriptor(
+  name='IdBajaResponse',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.IdBajaResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='nombre', full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest.nombre', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='baja', full_name='com.medicamentos_management.stubs.tipoMedicamento.IdBajaResponse.baja', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -96,7 +89,117 @@ _TIPOMEDICAMENTOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=193,
-  serialized_end=245,
+  serialized_end=223,
+)
+
+
+_ALTATIPOMEDICAMENTOREQUEST = _descriptor.Descriptor(
+  name='AltaTipoMedicamentoRequest',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='nombre', full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoRequest.nombre', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=225,
+  serialized_end=269,
+)
+
+
+_ALTATIPOMEDICAMENTORESPONSE = _descriptor.Descriptor(
+  name='AltaTipoMedicamentoResponse',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse.id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nombre', full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse.nombre', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='activo', full_name='com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse.activo', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=271,
+  serialized_end=344,
+)
+
+
+_TIPOMEDICAMENTOREQUEST = _descriptor.Descriptor(
+  name='TipoMedicamentoRequest',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest.id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=346,
+  serialized_end=382,
 )
 
 
@@ -122,6 +225,13 @@ _TIPOMEDICAMENTORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='activo', full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse.activo', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -134,13 +244,83 @@ _TIPOMEDICAMENTORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=247,
-  serialized_end=300,
+  serialized_start=384,
+  serialized_end=453,
 )
 
+
+_TRAERTODOSREQUEST = _descriptor.Descriptor(
+  name='TraerTodosRequest',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.TraerTodosRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='todos', full_name='com.medicamentos_management.stubs.tipoMedicamento.TraerTodosRequest.todos', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=455,
+  serialized_end=489,
+)
+
+
+_TRAERTODOSRESPONSE = _descriptor.Descriptor(
+  name='TraerTodosResponse',
+  full_name='com.medicamentos_management.stubs.tipoMedicamento.TraerTodosResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='todos', full_name='com.medicamentos_management.stubs.tipoMedicamento.TraerTodosResponse.todos', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=491,
+  serialized_end=602,
+)
+
+_TRAERTODOSRESPONSE.fields_by_name['todos'].message_type = _TIPOMEDICAMENTORESPONSE
 DESCRIPTOR.message_types_by_name['IdBajaRequest'] = _IDBAJAREQUEST
+DESCRIPTOR.message_types_by_name['IdBajaResponse'] = _IDBAJARESPONSE
+DESCRIPTOR.message_types_by_name['AltaTipoMedicamentoRequest'] = _ALTATIPOMEDICAMENTOREQUEST
+DESCRIPTOR.message_types_by_name['AltaTipoMedicamentoResponse'] = _ALTATIPOMEDICAMENTORESPONSE
 DESCRIPTOR.message_types_by_name['TipoMedicamentoRequest'] = _TIPOMEDICAMENTOREQUEST
 DESCRIPTOR.message_types_by_name['TipoMedicamentoResponse'] = _TIPOMEDICAMENTORESPONSE
+DESCRIPTOR.message_types_by_name['TraerTodosRequest'] = _TRAERTODOSREQUEST
+DESCRIPTOR.message_types_by_name['TraerTodosResponse'] = _TRAERTODOSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 IdBajaRequest = _reflection.GeneratedProtocolMessageType('IdBajaRequest', (_message.Message,), {
@@ -149,6 +329,27 @@ IdBajaRequest = _reflection.GeneratedProtocolMessageType('IdBajaRequest', (_mess
   # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.IdBajaRequest)
   })
 _sym_db.RegisterMessage(IdBajaRequest)
+
+IdBajaResponse = _reflection.GeneratedProtocolMessageType('IdBajaResponse', (_message.Message,), {
+  'DESCRIPTOR' : _IDBAJARESPONSE,
+  '__module__' : 'tipoMedicamento_pb2'
+  # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.IdBajaResponse)
+  })
+_sym_db.RegisterMessage(IdBajaResponse)
+
+AltaTipoMedicamentoRequest = _reflection.GeneratedProtocolMessageType('AltaTipoMedicamentoRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ALTATIPOMEDICAMENTOREQUEST,
+  '__module__' : 'tipoMedicamento_pb2'
+  # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoRequest)
+  })
+_sym_db.RegisterMessage(AltaTipoMedicamentoRequest)
+
+AltaTipoMedicamentoResponse = _reflection.GeneratedProtocolMessageType('AltaTipoMedicamentoResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ALTATIPOMEDICAMENTORESPONSE,
+  '__module__' : 'tipoMedicamento_pb2'
+  # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.AltaTipoMedicamentoResponse)
+  })
+_sym_db.RegisterMessage(AltaTipoMedicamentoResponse)
 
 TipoMedicamentoRequest = _reflection.GeneratedProtocolMessageType('TipoMedicamentoRequest', (_message.Message,), {
   'DESCRIPTOR' : _TIPOMEDICAMENTOREQUEST,
@@ -164,6 +365,20 @@ TipoMedicamentoResponse = _reflection.GeneratedProtocolMessageType('TipoMedicame
   })
 _sym_db.RegisterMessage(TipoMedicamentoResponse)
 
+TraerTodosRequest = _reflection.GeneratedProtocolMessageType('TraerTodosRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TRAERTODOSREQUEST,
+  '__module__' : 'tipoMedicamento_pb2'
+  # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.TraerTodosRequest)
+  })
+_sym_db.RegisterMessage(TraerTodosRequest)
+
+TraerTodosResponse = _reflection.GeneratedProtocolMessageType('TraerTodosResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TRAERTODOSRESPONSE,
+  '__module__' : 'tipoMedicamento_pb2'
+  # @@protoc_insertion_point(class_scope:com.medicamentos_management.stubs.tipoMedicamento.TraerTodosResponse)
+  })
+_sym_db.RegisterMessage(TraerTodosResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -174,16 +389,16 @@ _TIPOMEDICAMENTOSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=303,
-  serialized_end=840,
+  serialized_start=605,
+  serialized_end=1307,
   methods=[
   _descriptor.MethodDescriptor(
     name='altaTipoMedicamento',
     full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoService.altaTipoMedicamento',
     index=0,
     containing_service=None,
-    input_type=_TIPOMEDICAMENTOREQUEST,
-    output_type=_TIPOMEDICAMENTORESPONSE,
+    input_type=_ALTATIPOMEDICAMENTOREQUEST,
+    output_type=_ALTATIPOMEDICAMENTORESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
@@ -193,7 +408,7 @@ _TIPOMEDICAMENTOSERVICE = _descriptor.ServiceDescriptor(
     index=1,
     containing_service=None,
     input_type=_IDBAJAREQUEST,
-    output_type=_IDBAJAREQUEST,
+    output_type=_IDBAJARESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
@@ -204,6 +419,16 @@ _TIPOMEDICAMENTOSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_TIPOMEDICAMENTOREQUEST,
     output_type=_TIPOMEDICAMENTORESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='traerTodos',
+    full_name='com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoService.traerTodos',
+    index=3,
+    containing_service=None,
+    input_type=_TRAERTODOSREQUEST,
+    output_type=_TRAERTODOSRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

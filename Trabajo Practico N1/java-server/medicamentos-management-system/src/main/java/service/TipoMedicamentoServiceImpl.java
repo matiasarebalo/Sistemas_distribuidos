@@ -6,6 +6,8 @@ import domain.TipoMedicamento;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,6 +59,34 @@ public class TipoMedicamentoServiceImpl extends TipoMedicamentoServiceGrpc.TipoM
 
         }catch (NoSuchElementException e){
             logger.log(Level.SEVERE, "NO TIPO MEDICAMENTO FOUND WITH THE TIPO MEDICAMENTO ID :- ");
+            responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+        }
+    }
+    
+    @Override
+    public void traerTodos(TraerTodosRequest request, StreamObserver<TraerTodosResponse> responseObserver) {
+        try {
+            List<TipoMedicamento> listaTipos = tipoMedicamentoDao.traerTodos();
+            TipoMedicamentoResponse tipoMedicamentoResponse;
+            List<TipoMedicamentoResponse> tipos = new ArrayList<>();
+
+            for (TipoMedicamento t: listaTipos) {
+                tipoMedicamentoResponse = TipoMedicamentoResponse.newBuilder()
+                        .setId(t.getId())
+                        .setNombre(t.getNombre())
+                        .build();
+
+                tipos.add(tipoMedicamentoResponse);
+            }
+
+            TraerTodosResponse todosResponse = TraerTodosResponse.newBuilder()
+                    .addAllTodos(tipos)
+                    .build();
+
+            responseObserver.onNext(todosResponse);
+            responseObserver.onCompleted();
+        } catch (NoSuchElementException e) {
+            logger.log(Level.SEVERE, "NO HUBO RESULTADOS PARA LA CONSULTA");
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }

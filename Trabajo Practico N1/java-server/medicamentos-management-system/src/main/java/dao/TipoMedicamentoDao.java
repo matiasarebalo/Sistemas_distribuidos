@@ -9,6 +9,8 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -106,5 +108,16 @@ public class TipoMedicamentoDao {
         return 1;
     }
 
+    public List<TipoMedicamento> traerTodos () {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
+        EntityManager em = emf.createEntityManager();
+        List<TipoMedicamento> listaTipos = em.createNativeQuery("SELECT * FROM tipomedicamento WHERE activo = 1;", TipoMedicamento.class).getResultList();
+
+        if (listaTipos == null) {
+            throw new NoSuchElementException("NO TRAJO NADA LA CONSULTA ");
+        }
+
+        return listaTipos;
+    }
 
 }

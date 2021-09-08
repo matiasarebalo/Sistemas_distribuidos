@@ -15,7 +15,7 @@ public class MedicamentoServer {
 
     public static void main(String[] args) {
         Server server = ServerBuilder.forPort(9091)
-             //   .addService(new  MedicamentoServiceImpl())
+                //.addService(new  MedicamentoServiceImpl())
                 .addService(new TipoMedicamentoServiceImpl())
                 .build();
         
