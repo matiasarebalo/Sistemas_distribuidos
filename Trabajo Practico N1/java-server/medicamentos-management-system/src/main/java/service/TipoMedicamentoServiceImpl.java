@@ -5,11 +5,7 @@ import cliente.ResultClient;
 
 //import com.medicamentos_management.stubs.medicamento.*;
 import com.google.protobuf.Empty;
-import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoServiceGrpc;
-import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoRequest;
-import com.medicamentos_management.stubs.tipoMedicamento.TipoMedicamentoResponse;
-
-import com.medicamentos_management.stubs.tipoMedicamento.IdBajaRequest;
+import com.medicamentos_management.stubs.tipoMedicamento.*;
 
 import domain.TipoMedicamento;
 import dao.TipoMedicamentoDao;
@@ -18,6 +14,7 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
@@ -71,4 +68,31 @@ public class TipoMedicamentoServiceImpl extends TipoMedicamentoServiceGrpc.TipoM
         }
     }
 
+    @Override
+    public void traerTodos(TraerTodosRequest request, StreamObserver<TraerTodosResponse> responseObserver) {
+        try {
+            List<TipoMedicamento> listaTipos = tipoMedicamentoDao.traerTodos();
+            TipoMedicamentoResponse tipoMedicamentoResponse;
+            List<TipoMedicamentoResponse> tipos = new ArrayList<>();
+
+            for (TipoMedicamento t: listaTipos) {
+                tipoMedicamentoResponse = TipoMedicamentoResponse.newBuilder()
+                        .setId(t.getId())
+                        .setNombre(t.getNombre())
+                        .build();
+
+                tipos.add(tipoMedicamentoResponse);
+            }
+
+            TraerTodosResponse todosResponse = TraerTodosResponse.newBuilder()
+                    .addAllTodos(tipos)
+                    .build();
+
+            responseObserver.onNext(todosResponse);
+            responseObserver.onCompleted();
+        } catch (NoSuchElementException e) {
+            logger.log(Level.SEVERE, "NO HUBO RESULTADOS PARA LA CONSULTA");
+            responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+        }
+    }
 }

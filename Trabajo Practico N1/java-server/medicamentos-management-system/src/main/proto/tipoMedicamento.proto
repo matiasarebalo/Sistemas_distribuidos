@@ -20,6 +20,7 @@ service TipoMedicamentoService{
   rpc altaTipoMedicamento (TipoMedicamentoRequest) returns (TipoMedicamentoResponse) {};
   rpc bajaTipoMedicamento (IdBajaRequest) returns (IdBajaRequest) {};
   rpc getTipoMedicamentoInfo(TipoMedicamentoRequest) returns (TipoMedicamentoResponse);
+  rpc traerTodos (TraerTodosRequest) returns (TraerTodosResponse);
 }
 
 message IdBajaRequest{
@@ -34,4 +35,12 @@ message TipoMedicamentoRequest{
 message TipoMedicamentoResponse{
   int32 id = 1;
   string nombre = 2;
+}
+
+message TraerTodosRequest {
+  string todos = 1;
+}
+
+message TraerTodosResponse {
+  repeated TipoMedicamentoResponse todos = 1;
 }

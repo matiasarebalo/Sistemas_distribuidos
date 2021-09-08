@@ -3,10 +3,11 @@ package dao;
 import domain.Medicamento;
 import domain.TipoMedicamento;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class TipoMedicamentoDao {
@@ -39,7 +40,6 @@ public class TipoMedicamentoDao {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
         EntityManager em = emf.createEntityManager();
 
-
         TipoMedicamento tipo = new TipoMedicamento(id, nombre, activo);
 
         try {
@@ -53,12 +53,9 @@ public class TipoMedicamentoDao {
             em.close();
         }
 
-
         // If everything worked fine, return the result.
         return tipo;
     }
-
-
 
     public int bajaTipo(int id){
 
@@ -67,7 +64,6 @@ public class TipoMedicamentoDao {
         // Here we should provide the name of the persistence unit that we provided in the persistence.xml file.
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
         EntityManager em = emf.createEntityManager();
-
 
         TipoMedicamento tipo = this.findById(id);
         tipo.setActivo(false);
@@ -83,10 +79,19 @@ public class TipoMedicamentoDao {
             em.close();
         }
 
-
         // If everything worked fine, return the result.
         return 1;
     }
 
+    public List<TipoMedicamento> traerTodos () {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("medicamentos-management-system");
+        EntityManager em = emf.createEntityManager();
+        List<TipoMedicamento> listaTipos = em.createNativeQuery("SELECT * FROM tipomedicamento", TipoMedicamento.class).getResultList();
 
+        if (listaTipos == null) {
+            throw new NoSuchElementException("NO TRAJO NADA LA CONSULTA ");
+        }
+
+        return listaTipos;
+    }
 }
