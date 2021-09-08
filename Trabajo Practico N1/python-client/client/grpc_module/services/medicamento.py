@@ -11,7 +11,7 @@ class MedicamentoClient(object):
             '{}:{}'.format(self.host, self.server_port))
         self.stub = pb2_grpc.MedicamentoServiceStub(self.channel)
 
-    def alta(self, medicamento):
+    def alta(self, medicamento): 
         response = self.stub.altaMedicamento({   
             "id": 444,
             "codigo": "codigo1",

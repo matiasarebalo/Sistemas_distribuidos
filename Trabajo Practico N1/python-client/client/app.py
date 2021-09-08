@@ -18,7 +18,6 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def home():
     return render_template('home/home.html')
 
-
 def parsear_todos(lista, response_name="todos"):
     lista = MessageToDict(lista)[response_name]
     for l in lista:
@@ -26,7 +25,8 @@ def parsear_todos(lista, response_name="todos"):
             l['id'] = 0
     return lista
 
-# TipoMedicamento
+################################ TipoMedicamento ################################
+
 @app.route('/tipoMedicamento/', methods=['GET'])
 def homeTipoMedicamento():
     tipo_medicamentos = tipo_medicamento_client.traer_todos()
@@ -55,7 +55,8 @@ def bajaTipoMedicamento(idTipoMedicamento):
     return redirect(url_for('homeTipoMedicamento'))
 
 
-# Medicamento
+################################ Medicamento ################################
+
 @app.route('/medicamento/')
 def homeMedicamento():
     medicamentos = medicamento_client.traer_todos()
@@ -131,8 +132,10 @@ def listarMedicamentosNombreComercial():
 
 @app.route('/medicamento/<int:codigo>/esPrioritario', methods=['GET'])
 def esPrioritario(codigo):
+    print("---------------------------------------- ARRANCA --------------------------")
     response = medicamento_client.esPrioritario("333-44555-9")
-    print(response)
+    print(MessageToDict(response))
+    print("---------------------------------------- TERMINA --------------------------")
     return render_template('medicamento/esPrioritario.html')
 
 @app.route('/medicamento/<int:codigo>/verificarCodigo', methods=['GET'])

@@ -29,7 +29,7 @@
     <div class="col-md-4">
         <a href="{{ url_for('listarMedicamentosNombreComercial') }}" class="text-decoration-none">
             <div class="card border-dark mb-3">
-                <div class="card-header">Listar medicamentos con nombre comercial A.</div>
+                <div class="card-header">Listar medicamentos con nombre comercial.</div>
             </div>
         </a>
     </div>
@@ -56,7 +56,7 @@
                     <td>{{ t['tipo'] }}</td>
                     <td>
                         <div>
-                            <a href="{{ url_for('verificarCodigo', codigo=1) }}" class="text-decoration-none">
+                            <a href="{{ url_for('verificarCodigo', codigo=1) }}" class="text-decoration-none" onclick="verificarCodigo(`{{t['codigo']}}`)">
                                 <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
                                     <div class="card-header">Verificar codigo de producto.</div>
                                 </div>
@@ -65,7 +65,7 @@
                     </td>
                     <td>
                         <div>
-                            <a href="{{ url_for('esPrioritario', codigo=1) }}" class="text-decoration-none">
+                            <a href="{{ url_for('esPrioritario', codigo=1) }}" class="text-decoration-none" onclick="verificarPrioridad(`{{t['codigo']}}`)">
                                 <div class="card border-dark mb-3" style="background-color: #dbf2e3;">
                                     <div class="card-header">Verificar prioridad del producto.</div>
                                 </div>
@@ -77,5 +77,17 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    const verificarCodigo = (codigo) => {
+        console.log(codigo)
+    }
+
+    const verificarPrioridad = (codigo) => {
+        console.log(codigo)
+    }
+
+</script>
+
 
 {% endblock %}
