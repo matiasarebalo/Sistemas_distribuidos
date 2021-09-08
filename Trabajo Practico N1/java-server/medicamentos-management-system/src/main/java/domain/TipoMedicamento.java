@@ -1,9 +1,7 @@
 
 package domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -26,6 +24,11 @@ public class TipoMedicamento {
 	public TipoMedicamento(int id, String nombre, boolean activo) {
 		super();
 		this.id = id;
+		this.nombre = nombre;
+		this.activo = activo;
+	}
+
+	public TipoMedicamento(String nombre, boolean activo) {
 		this.nombre = nombre;
 		this.activo = activo;
 	}

@@ -9,8 +9,7 @@ import com.medicamentos_management.stubs.tipoMedicamento.*;
 
 import domain.TipoMedicamento;
 import dao.TipoMedicamentoDao;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import domain.TipoMedicamento;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
@@ -20,54 +19,57 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//import com.medicamentos_management.stubs.medicamento.*;
+//import com.medicamentos_management.stubs.medicamento.*;
+
 public class TipoMedicamentoServiceImpl extends TipoMedicamentoServiceGrpc.TipoMedicamentoServiceImplBase {
 
-	private TipoMedicamentoDao tipoMedicamentoDao = new TipoMedicamentoDao();
-    
+    private TipoMedicamentoDao tipoMedicamentoDao = new TipoMedicamentoDao();
+
     private static final Logger logger = Logger.getLogger(TipoMedicamentoServiceImpl.class.getName());
 
     @Override
-    public void altaTipoMedicamento(TipoMedicamentoRequest request, StreamObserver<TipoMedicamentoResponse> responseObserver) {
-        int id = request.getId();
+    public void altaTipoMedicamento(AltaTipoMedicamentoRequest request, StreamObserver<AltaTipoMedicamentoResponse> responseObserver) {
         String nombre = request.getNombre();
 
         try{
-            TipoMedicamento tipoMedicamento = tipoMedicamentoDao.guardarTipo(id, nombre, true); 
+            TipoMedicamento tipoMedicamento = tipoMedicamentoDao.guardarTipo(nombre, true);
 
-            TipoMedicamentoResponse tipoMedicamentoResponse = TipoMedicamentoResponse.newBuilder()
-                    .setId(id)
+            AltaTipoMedicamentoResponse tipoMedicamentoResponse = AltaTipoMedicamentoResponse.newBuilder()
+                    .setId(tipoMedicamento.getId())
                     .setNombre(nombre)
+                    .setActivo(tipoMedicamento.isActivo())
                     .build();
 
             responseObserver.onNext(tipoMedicamentoResponse);
             responseObserver.onCompleted();
         }catch (NoSuchElementException e){
-        	
-            logger.log(Level.SEVERE, "NO TIPO MEDICAMENTO FOUND WITH THE TIPO MEDICAMENTO ID :- "+id);
+
+            logger.log(Level.SEVERE, "NO TIPO MEDICAMENTO FOUND WITH THE TIPO MEDICAMENTO ID :- "+nombre);
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }
 
     @Override
-    public void bajaTipoMedicamento(IdBajaRequest request, StreamObserver<IdBajaRequest> responseObserver) {
+    public void bajaTipoMedicamento(IdBajaRequest request, StreamObserver<IdBajaResponse> responseObserver) {
         int id = request.getId();
 
         try{
             int baja = tipoMedicamentoDao.bajaTipo(id);
 
-            IdBajaRequest idBaja = IdBajaRequest.newBuilder()
-                    .setId(1)
+            IdBajaResponse idBaja = IdBajaResponse.newBuilder()
+                    .setBaja("Se ha dado de baja el tipo de medicamento")
                     .build();
 
             responseObserver.onNext(idBaja);
             responseObserver.onCompleted();
-            
+
         }catch (NoSuchElementException e){
-            logger.log(Level.SEVERE, "NO MEDICAMENTO FOUND WITH THE MEDICAMENTO ID :- ");
+            logger.log(Level.SEVERE, "NO TIPO MEDICAMENTO FOUND WITH THE TIPO MEDICAMENTO ID :- ");
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }
-
+    
     @Override
     public void traerTodos(TraerTodosRequest request, StreamObserver<TraerTodosResponse> responseObserver) {
         try {
@@ -95,4 +97,5 @@ public class TipoMedicamentoServiceImpl extends TipoMedicamentoServiceGrpc.TipoM
             responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
         }
     }
+
 }

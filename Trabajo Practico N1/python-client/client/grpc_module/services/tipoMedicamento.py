@@ -10,13 +10,14 @@ class TipoMedicamentoClient():
             '{}:{}'.format(self.host, self.server_port))
         self.stub = pb2_grpc.TipoMedicamentoServiceStub(self.channel)
 
-    def alta(self, tipo_medicamento):
-        #Esto donde va?
-        #a = pb2.TipoMedicamento()
-        #Que recibe esto? no recibe un json? esta bien asi?
-        response = self.stub.altaTipoMedicamento(request=tipo_medicamento)
-        return self.stub.GetServerResponse(response)
+    def alta(self, nombre):
+        response = pb2.AltaTipoMedicamentoRequest(nombre=nombre)
+        return self.stub.altaTipoMedicamento(response)
 
     def baja(self, id_tipo_medicamento):
-        response = self.stub.bajaTipoMedicamento(request=id_tipo_medicamento)
-        return self.stub.GetServerResponse(response)
+        response = pb2.IdBajaRequest(id=id_tipo_medicamento)
+        return self.stub.bajaTipoMedicamento(response)
+
+    def traer_todos(self):
+        response = pb2.TraerTodosRequest(todos="string_cualquiera")
+        return self.stub.traerTodos(response)
